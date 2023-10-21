@@ -1,0 +1,2581 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="google-site-verification" content="EP46HD8tlAtZ7DYhEC5Xn5Cvnb94XYK_Hxe8aeJvuSQ" />
+<meta name="msvalidate.01" content="110E1950E8EDAD23E577E2706BB64E29" />
+
+<script>
+    	var base_url = "https://www.apolloclinic.com/";
+    </script>
+    
+<link rel="icon" href="https://www.apolloclinic.com/images/favicon.ico">
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="canonical" href="https://www.apolloclinic.com" />
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+<title>Multi Speciality Clinic - Apollo Family Clinic</title>
+
+<meta name="google-signin-client_id" content="604924407230-aj3n3ebv6ast7h4sltgbfla9eg4anphn.apps.googleusercontent.com">
+<script>
+/* window.onLoadCallback = function(){
+  gapi.auth2.init({
+      client_id: '620085933796-2l9i7p5poa2p5bdhom0n6dh2id96q30v.apps.googleusercontent.com',
+      scope: 'profile email'
+    });
+} */
+</script>
+<!-- <style>.gt_selector {margin-top: 37px !important; height: 25px !important;}</style> -->
+<script>
+
+function setCookie(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+    var expires = "expires="+d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+
+function checkCookie() {
+    var user = getCookie("username");
+    //console.log(user);
+    if (user != "") {
+        alert("Welcome again " + user);
+    } else {
+        user = prompt("Please enter your name:", "");
+        if (user != "" && user != null) {
+            setCookie("username", user, 365);
+        }
+    }
+}
+
+function visitcheckCookie() {
+	console.log('hello page time new');
+	var curdatens = new Date($.now());
+    var viscookie = getCookie("visitpage");
+    var vispagenamecookie = getCookie("visitpagename");
+    var vispaglastvisit = getCookie("visitpagetime");
+    console.log("string exist"+viscookie.indexOf("for-patients"));
+    console.log('testck'+vispaglastvisit);
+    //console.log(vispaglastvisit);
+    if (viscookie != "" && vispaglastvisit != '') {
+        var pretime = new Date($.now());
+    	var diff = new Date(pretime) - new Date(vispaglastvisit);
+    	var diff_time = (60*diff)/(60*60*1000);
+
+    	var cooktime = Math.round(diff_time);
+    	console.log('brahmitime'+diff_time);
+    	console.log('cooktime'+cooktime);
+    	if(cooktime >= 1)
+    	{
+
+    	$("#lastvisitpagebtn").html(vispagenamecookie);
+    	$("#dynservcid").html(vispagenamecookie);
+
+    	$("#lastvisitpagebtn").attr('vispageurl',viscookie);
+    	console.log('visited page'+viscookie);
+    	//$("#lastvisitpage").modal('show');         /* Remove comments for show visiting page popup */
+    	setCookie("visitpagetime", "", 0);
+		setCookie("visitpagename", "", 0);
+		setCookie("visitpage", "", 0);
+
+    	}
+
+    	 //setCookie("visitpagetime", "", 365);
+       // alert("Welcome again " + viscookie);
+    }
+    console.log('hello'+viscookie.indexOf("for-patients"));
+    if(viscookie.indexOf("for-patients") >= 0)
+	{
+
+	}
+    else{
+    	console.log('it return');
+    	setCookie("visitpagetime", "", 0);
+		setCookie("visitpagename", "", 0);
+		setCookie("visitpage", "", 0);
+    }
+
+}
+
+
+function onSignIn(googleUser) {
+
+	  var profile = googleUser.getBasicProfile();
+	  var fullname = profile.getName();
+	  var email = profile.getEmail();
+	  if(fullname != '')
+	  {
+		  $('#fullname').val(fullname);
+		  $('#fullnamebk').val(fullname);
+		  $('#fullnamesernewin').val(fullname);
+		  $('#fullnameinnew').val(fullname);
+		  $('#fullnamebooktest').val(fullname);
+		  $('#cfullname').val(fullname);
+		  $('input[name="fullname"]').val(fullname);
+
+	  }
+	  if(email != '')
+	  {
+		  $('#email').val(email);
+		  $('#emailbk').val(email);
+		  $('#emailsernewin').val(email);
+		  $('#emailinnew').val(email);
+		  $('#emailbooktest').val(email);
+		  $('#cemail').val(email);
+		  $('input[name="email"]').val(email);
+
+	  }
+	//  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+	  //console.log('Name: ' + profile.getName());
+	  //console.log('Image URL: ' + profile.getImageUrl());
+	 // console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+	 var gsts = $('#gl-status').attr('stval');
+	 var booksts = $('#booktnewtest').attr('stval');
+	 console.log('googlstatus'+gsts);
+	 if(gsts != 0)
+	 {
+	  $('#socialmediapp').modal('hide');
+	  var cntyglb = $('#googleareacountry').attr('areainfo');
+	  $('#hcountry').val(cntyglb);
+		countryChange(cntyglb);
+      $('#book_model').modal('show');
+	 }
+
+	 if(booksts != 0)
+	 {
+	  $('#socialmediapp').modal('hide');
+      $('#book_test').modal('show');
+	 }
+	}
+	
+
+          $(function () {
+    
+            $('#form4').on('submit', function (e) {
+    
+              e.preventDefault();
+                
+              $.ajax({
+                   
+                type: 'get',
+                url: 'c2call.php',
+                data: $('.form4').serialize(),
+                success: function () {
+                  
+                  $(".form4").hide();
+                  $(".form2").show();
+                 $(".modal-title").text("Enter Your OTP");
+                  $(".user_phone_otp").val($(".user_phone").val());
+                  
+                }
+              });
+    
+            });
+    
+          });
+     
+          $(function () {
+    
+            $('#form2').on('submit', function (e) {
+              e.preventDefault();
+                  $(".form3").show();
+              $.ajax({
+                type: 'post',
+                url: 'c2callVerify.php',
+                data: $('.form2').serialize(),
+                success: function () {
+                    
+                  $(".form2").hide();
+                   $(".modal-title").text("You will get a call shortly");
+                  
+                }
+              });
+    
+            });
+    
+          });
+          
+          $('body').on('hidden.bs.modal', '.modal', function () {
+        $(".modal-content").empty();
+      });
+  
+  
+    
+</script>
+<script defer>
+window.fbAsyncInit = function() {
+    // FB JavaScript SDK configuration and setup
+    FB.init({
+      appId      : '147018106099665', // FB App ID
+      cookie     : true,  // enable cookies to allow the server to access the session
+      xfbml      : true,  // parse social plugins on this page
+      version    : 'v2.10' // use graph api version 2.8
+    });
+
+    // Check whether the user already logged in
+    FB.getLoginStatus(function(response) {
+        if (response.status === 'connected') {
+            //display user data
+            getFbUserData();
+
+        }
+    });
+};
+
+// Load the JavaScript SDK asynchronously
+(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+
+// Facebook login with JavaScript SDK
+function fbLogin() {
+    FB.login(function (response) {
+        if (response.authResponse) {
+            // Get and display the user profile data
+            getFbUserData();
+            $('#socialmediapp').modal('hide');
+            var bookstsnew = $('#booktnewtest').attr('stval');
+            if(bookstsnew == 1)
+            {
+            	$('#book_test').modal('show');
+            }
+            else{
+            $('#book_model').modal('show');
+            }
+
+        } else {
+            document.getElementById('status').innerHTML = 'User cancelled login or did not fully authorize.';
+        }
+    }, {scope: 'email'});
+}
+
+// Fetch the user profile data from facebook
+function getFbUserData(){
+    FB.api('/me', {locale: 'en_US', fields: 'id,first_name,last_name,name,email,link,gender,locale,picture'},
+    function (response) {
+
+    	var fullnamefb = $('#fullname').val();
+  	  var emailfb = $('#email').val();
+  	  if(fullnamefb == '')
+  	  {
+  	  	  var fbfname = response.first_name;
+  	  	  var lastfname = response.last_name;
+  	  	  var allname = fbfname+ " "+lastfname;
+  	  	  if(fbfname != undefined && lastfname != undefined)
+  	  	  {
+  		  $('#fullname').val(fbfname +' '+ lastfname);
+  		  $('#fullnamebk').val(fbfname +' '+ lastfname);
+  		 $('#fullnamesernewin').val(fbfname +' '+ lastfname);
+  		 $('#fullnameinnew').val(fbfname +' '+ lastfname);
+  		$('#fullnamebooktest').val(fbfname +' '+ lastfname);
+  		$('#cfullname').val(fbfname +' '+ lastfname);
+  		$('input[name="fullname"]').val(fbfname +' '+ lastfname);
+  	  	  }
+  	  }
+  	  if(emailfb == '')
+  	  {
+  		var fbemail = response.email;
+  		  $('#email').val(fbemail);
+  		  $('#emailbk').val(fbemail);
+  		$('#emailsernewin').val(fbemail);
+		  $('#emailinnew').val(fbemail);
+		  $('#emailbooktest').val(fbemail);
+	  		$('#cemail').val(fbemail);
+	  		$('input[name="email"]').val(fbemail);
+  	  }
+        console.log(response.email);
+        //document.getElementById('fbLink').setAttribute("onclick","fbLogout()");
+        //document.getElementById('fbLink').innerHTML = 'Logout from Facebook';
+        //document.getElementById('status').innerHTML = 'Thanks for logging in, ' + response.first_name + '!';
+        document.getElementById('userData').innerHTML = '<p><b>FB ID:</b> '+response.id+'</p><p><b>Name:</b> '+response.first_name+' '+response.last_name+'</p><p><b>Email:</b> '+response.email+'</p><p><b>Gender:</b> '+response.gender+'</p><p><b>Picture:</b> <img src="'+response.picture.data.url+'"/></p><p><b>FB Profile:</b> <a target="_blank" href="'+response.link+'">click to view profile</a></p>';
+    });
+}
+
+// Logout from facebook
+function fbLogout() {
+    FB.logout(function() {
+        document.getElementById('fbLink').setAttribute("onclick","fbLogin()");
+        document.getElementById('fbLink').innerHTML = '<img src="fblogin.png" width="200"/>';
+        document.getElementById('userData').innerHTML = '';
+        document.getElementById('status').innerHTML = 'You have successfully logout from Facebook.';
+    });
+}
+</script>
+<meta name="keywords" content="multi speciality clinic, speciality clinic, family clinic, Apollo Clinic" />
+<meta name="description" content="Apollo Clinic provides quality health care services for day-to-day needs with facilities for consultation, diagnostics, health checks & more, all under one roof." />
+<link href="https://www.apolloclinic.com/assets/css/all-styles.css" rel="stylesheet" />
+<link href="./style.css" rel="stylesheet">
+<!-- <link href="https://www.apolloclinic.com/assets/css/style.css" rel="stylesheet" /> -->
+<link href="./style.css" rel="stylesheet">
+<script src="https://maps.google.com/maps/api/js?sensor=false&libraries=geometry&v=3.22&key=AIzaSyBEZ1DDvV2DtxNEn7oQd_Up9dFPjoNVezY"></script>
+<link href="https://fonts.googleapis.com/css?family=Roboto:400,300,500,700" rel="stylesheet" type="text/css">
+<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+<script type="text/javascript">
+var codeLoaded = false;
+function loadCode() {
+// If the code has already been loaded, return
+  if (codeLoaded) {return;}
+// Load your JavaScript code here
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-585XMHK');
+  console.log("Loading JavaScript code...");
+// Set the flag to true to indicate that the code has been loaded
+  codeLoaded = true;
+// Remove the event listeners to prevent further calls
+window.removeEventListener("scroll", loadCode);
+window.removeEventListener("click", loadCode);
+window.removeEventListener("mousemove", loadCode);
+window.removeEventListener("touchstart", loadCode);}
+window.addEventListener("scroll", loadCode, { once: true });
+window.addEventListener("click", loadCode, { once: true });
+window.addEventListener("mousemove", loadCode, { once: true });
+window.addEventListener("touchstart", loadCode, { once: true });
+</script>
+
+
+<script src="https://www.apolloclinic.com/assets/js/all-scripts.js"></script>
+<script src="https://www.apolloclinic.com/assets/js/validation.js"></script>
+<script src="https://www.apolloclinic.com/assets/js/appointment-widget.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+	//getFbUserData();
+	initialize();
+	visitcheckCookie();
+	$('input[name="appoinment"]').datepicker().datepicker("setDate", "0");
+
+
+	$('.reqapt').on('click',function(){
+
+		$('#gl-status').attr('stval',1);
+		var fnamenew =  $('#fullname').val();
+		var locnew = $('#googlearea').attr('areainfo');
+		//var locnew = 'tirupathi';
+		if(locnew != ''){
+		$('#address').val(locnew);
+		var options = $('#address option');
+
+		var values = $.map(options ,function(option) {
+		    if(option.value == locnew)
+		    {
+		    	$('#address').prop('disabled', 'disabled');
+		    }
+		});
+		//$('#address').prop('disabled', 'disabled');
+		//console.log(locnew);
+		areaChange(locnew);
+		}
+
+		if(fnamenew == '')
+		{
+		$('#socialmediapp').modal('show');
+		}
+		else{
+
+
+			$('#book_model').modal('show');
+		}
+			});
+
+
+  var geocoder;
+
+  if (navigator.geolocation) {
+
+    navigator.geolocation.getCurrentPosition(successFunction, errorFunction);
+}
+//Get the latitude and the longitude;
+function successFunction(position) {
+	console.log('new2018')
+    var lat = position.coords.latitude;
+    var lng = position.coords.longitude;
+    codeLatLng(lat, lng)
+}
+
+function errorFunction(){
+    console.log("Geocoder failed");
+}
+
+  function initialize() {
+    geocoder = new google.maps.Geocoder();
+
+
+
+  }
+
+  function codeLatLng(lat, lng) {
+	  console.log('hello new onessss');
+
+    var latlng = new google.maps.LatLng(lat, lng);
+    geocoder.geocode({'latLng': latlng}, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+      //console.log(results)
+        if (results[1]) {
+         //formatted address
+          $('#googleareaformatedadrs').attr("areainfo",results[0].formatted_address);
+         //console.log(results[0].formatted_address)
+        //find country name
+             for (var i=0; i<results[0].address_components.length; i++) {
+            for (var b=0;b<results[0].address_components[i].types.length;b++) {
+//console.log(results[0].address_components[i].types[b]);
+            //there are different types that might hold a city admin_area_lvl_1 usually does in come cases looking for sublocality type will be more appropriate
+            //administrative_area_level_2  this can be used before
+                if (results[0].address_components[i].types[b] == "locality") {
+                    //this is the object you are looking for
+                    city= results[0].address_components[i];
+                    break;
+                }
+                if (results[0].address_components[i].types[b] == "administrative_area_level_1") {
+                    //this is the object you are looking for
+                    state= results[0].address_components[i];
+                    break;
+                }
+                if (results[0].address_components[i].types[b] == "country") {
+                    //this is the object you are looking for
+                    country= results[0].address_components[i];
+                    break;
+                }
+            }
+        }
+        //city data
+        //console.log(city.short_name + " " + city.long_name)
+       // console.log(state.long_name);
+        //console.log(country.long_name);
+        $('#googlearea').attr("areainfo",city.long_name);
+        $('#googleareastate').attr("areainfo",state.long_name);
+        $('#googleareacountry').attr("areainfo",country.long_name);
+        $('#state').val(state.long_name);
+        $('#address2').val(city.long_name);
+        console.log('contact-hello');
+        var contacturl = window.location.href;
+        if(contacturl == 'https://www.apolloclinic.com/contact-us')
+        {
+        $('.panel-collapse').removeClass('in');
+        }
+        $('.'+city.long_name).addClass('in');
+
+        $('#hcountryinnew').val(country.long_name);
+        $('#hcountry').val(country.long_name);
+        countryChange(country.long_name);
+        areaChange(city.long_name);
+
+        $('.declsnew').html($('.'+city.long_name+'cls').html());
+        $('.'+city.long_name+'cls').remove();
+
+        var value = state.long_name;
+        var urlnewn = window.location.href;
+        console.log('brahmi test');
+        console.log('brahmi test new'+urlnewn);
+         if(urlnewn == 'https://www.apolloclinic.com/for-patients/find-a-doctor')
+         {
+        $("#clinics_list").html("<h3>Loading....</h3>");
+         }
+            $.ajax({
+                    method: "POST",
+                    url: "https://www.apolloclinic.com/clinics/getStateCities",
+                    data: { id: value}
+                  })
+            .done(function( msg ) {
+               msg = $.parseJSON(msg);
+               $("#city").html();
+               var str = '<option value="" selected>All</option>';
+               var selected = '';
+               if(msg.length > 0) {
+                  $.each(msg,function(key,value){
+                    if(value.name == city.long_name)
+                      selected = 'selected="selected"';
+                    str += "<option value='"+value.name+"' "+selected+">"+value.name+"</option>";
+                    selected = '';
+                  });
+                  selCity = "";
+                }
+                $("#city").html(str);
+
+                //console.log(urlnewn);
+                if(urlnewn == 'https://www.apolloclinic.com/for-patients/find-a-doctor')   {
+                getDoctors('all','','');
+                }
+                if(urlnewn == 'https://www.apolloclinic.com/clinic-locator')   {
+
+console.log('raju');
+                 function getClinics()
+                  {
+                     console.log('Raj');
+
+                      var country = country.long_name;
+                      var state = state.long_name;
+                      var city = city.long_name;
+                      $.ajax({
+                              method: "POST",
+                              url: "https://www.apolloclinic.com/clinics/getclinics",
+                              data: { country: country, state: state, city:city }
+                            })
+                            .done(function( msg ) {
+                               msg = $.parseJSON(msg);
+                               $("#clinics_list").html("<h3>Loading....</h3>");
+                               var str = '';
+                               if(msg.length > 0) {
+                               		$.each(msg,function(key,value){
+                                    var image = 'assets/images/noimage.png';
+                                    if(value['img'] === null)
+                                      image = 'assets/images/noimage.png';
+                                    else
+                                        image = value['img'];
+
+                                    str += '<div class="list-view-design">';
+                               			str += '<div class="col-md-4 find-doctor-img find-clinic-img">';
+                						        str += '<img src="https://www.apolloclinic.com/'+image+'" style="width:200px;height:200px;"/>';
+                						        str += '</div>';
+                						        str += '<div class="col-md-8 clinic-details-content">';
+                						        str += '<span class="docname"><a href="https://www.apolloclinic.com/clinic-locator/'+value['clinic_url']+'">'+value['area']+', '+value['city']+'</a></span>';
+                						        //str += '<span class="degree"></span>';
+                						        str += '<p class="specia"><span class="clabel">Address:</span><span class="carddescription">&nbsp;'+value['address']+', '+value['area']+', '+value['city']+', '+value['state']+', '+value['country']+' - '+value['pincode']+'</span></p>';
+                						        str += '<p class="specia"><span  class="clabel">Time:</span><span class="carddescription">&nbsp;'+value['timing']+'</span></p>';
+                						        str += '<p class="specia"><span  class="clabel">Phone:</span><span class="carddescription">&nbsp;'+value['phone']+'</span></p>';
+                						        str += '<p class="specia"><span  class="clabel">Email:</span><span class="carddescription">&nbsp;'+value['email']+'</span></p>';
+                						        str += '<p class="specia no_margin"><span><a class="btn btn-default view-map" href="javascript:void(0)" onclick="viewmap_details('+value['clinicId']+')" data-toggle="modal" data-target="#view_map">View Map</a></span></p>';
+                						        str += '</div>';
+                						        str += '</div>';
+                               		});
+                               		$("#clinics_list").html(str);
+                               } else {
+                                  str += '<div class="col-md-12 find-doctor-img no_clincs"> No Clinics Found</div>';
+                                  $("#clinics_list").html(str);
+                               }
+                            });
+                  }
+                  //console.log();
+                  getStatenew(country.long_name,state.long_name,city.long_name);
+
+
+
+
+
+
+
+
+
+                }
+
+
+
+            });
+
+
+
+        } else {
+        	console.log("No results found");
+        }
+      } else {
+    	  console.log("Geocoder failed due to: " + status);
+      }
+    });
+  }
+
+
+});
+
+</script>
+<script language="javascript">
+function toggle() {
+	var ele = document.getElementById("toggleText");
+	var text = document.getElementById("displayText");
+	if(ele.style.display == "block") {
+    		ele.style.display = "none";
+		text.innerHTML = "View more (+)";
+  	}
+	else {
+		ele.style.display = "block";
+		text.innerHTML = "View less ( - )";
+	}
+}
+</script>
+
+</head>
+<body>
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-585XMHK"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<div class="top-menu">
+<div class="container">
+<div class="row justify-content-center" style="vertical-align: middle;text-align: center;">
+<div class="col-md-2 col-sm-5 col-xs-4 logo-wrap">
+<a class="logo-design" href="https://www.apolloclinic.com/"><img src="https://radiantdentalcare.in/wp-content/uploads/2023/03/logo.png" alt="apollo clinic" width="100" height="60"></a>
+</div>
+<div class="col-md-10 col-sm-7 col-xs-8">
+
+<div style="width: 100%;">
+<ul class="social-network social-circle circle-main-wrap list-inline" style="margin-top: 15px;">
+
+
+<li><a class="icophone" href="tel:1860 500 7788" title="phone"><i class="fa fa-phone"></i></a><div class="one">Call</div></li>
+<li><a class="icomarker" href="https://www.apolloclinic.com/clinic-locator" title="marker"><i class="fa fa-map-marker"></i></a><div class="one">Locator</div></li>
+<!-- <li><a class="icowhatsapp" href="https://wa.me/917066028648?text=Hi, I contacted you Through your website." title="whatsapp" style="float: left; margin-left: 10px;"><img src="https://www.apolloclinic.com/assets/images/whatsapp-icon.png" style="width:40px; margin-left: -3px; margin-top: -2px;" alt="whatsapp" width="34" height="34"></a><div class="one">Whatsapp</div></li> -->
+
+<li><a class=" icocalendar" data-toggle="modal" data-target="#book_model" href="#" title="calendar"><i class="fa fa-calendar"></i></a><div class="one">Appt</div></li>
+</ul>
+</div>
+
+<div id="popup1" class="modal-box social-icon">
+<header>
+<a href="#" class="js-modal-close close">x</a>
+</header>
+<div class="modal-body top-menu-find-clinic">
+<p>
+<div class="g-signin2" data-onsuccess="onSignIn"></div>
+</p>
+<p>
+<a href="#" onclick="fbLogin()" id="fbLink">
+<div class="fb-login-button"></div></a>
+</a>
+<div id="status"></div>
+<div id="userData"></div>
+</p>
+</div>
+</div>
+<div class="logo-menu-right">
+<ul>
+<li><a href="tel:1860 500 7788"><i class="fa fa-phone" style="font-size: large; color: #E4008A; padding-right: 5px;"></i>1860-500-7788</a></li>
+<!-- <li><a href="#" data-toggle="modal" data-target="#c2Call"><i class="request_call" rel="nofollow"></i>Request
+A Call</a></li> -->
+
+<li><a href="#" data-toggle="modal" data-target="#book_model"><i class="fa fa-calendar" style="font-size: large; color: #E4008A; padding-right: 5px;" rel="nofollow"></i>Book an Appt</a></li>
+<!-- <li style="padding-left: 5px;"><a href="https://wa.me/917066028648?text=Hi, I contacted you Through your website." class="whatsapp" target="_blank"><img src="https://www.apolloclinic.com/assets/images/whatsapp-icon.png" alt style="margin-top: -4px"></a></li> -->
+<!-- <li style="padding-left: 10px;"><a href="https://wa.me/917066028648?text=Hi, I contacted you Through your website." class="whatsapp" target="_blank"><img src="https://www.apolloclinic.com/assets/images/whatsapp-icon.png" alt style="margin-top: -8px"></a></li> -->
+
+<li class="locator"><a href="https://www.apolloclinic.com/clinic-locator"><i class="fa fa-map-marker" style="font-size: large; color: #E4008A; padding-right: 5px;"></i>Clinic
+Locator</a></li>
+<li><a href="#" data-toggle="modal" data-target="#collection_model" rel="nofollow"><i class="fa fa-flask" style="font-size: large; color: #E4008A; padding-right: 5px;"></i>Sample Collection</a></li>
+<li style="display:none;"><a href="#" data-toggle="modal" data-target="#c2Call" rel="nofollow"><i class="home_sample"></i>c2Call</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<nav class=" navbar-inverse main-menu-design">
+<div class="container">
+<div class="row">
+<div class="locator-show top-menu-find-clinic">
+<a href="https://www.apolloclinic.com/clinic-locator" style="color: #ffffff;"><i class="find"></i>Clinic Locator</a>
+</div>
+
+<!-- <div class="site_search">
+<form method="post" action="https://www.apolloclinic.com/search" novalidate>
+<input class="search_text" id="search_text" name="search_text" type="text" placeholder="Site Search" /> <input type="hidden" name="searchfor" value="all" />
+<button type="submit" class="search_submit">Search</button>
+</form>
+</div> -->
+<div class="navbar-header">
+<div class="circle-main-wrap" style="float: left; margin-left: 15px; font-size: 27px;">
+ <a class href="https://www.apolloclinic.com/for-patients/find-a-doctor" style="color: #fff;
+font-size: 15px;">Find a Doctor</a></div>
+<button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
+<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+</button>
+<div class="footer-hide navbar-toggle collapsed mobi-menu" aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse">MENU</div>
+</div>
+<div class="navbar-collapse collapse menu-design-navbar" id="navbar">
+<ul class="nav navbar-nav menu-design-main">
+<li class="hmeicn">
+<a class href="https://www.apolloclinic.com/">
+<img src="https://www.apolloclinic.com/assets/images/home-icon.png" alt>
+</a></li>
+<li class>
+    <a class href="javascript:void(0)">For Patients</a><ul class="dd-list hf-subMenu"><li class><a class href>Services</a><ul class="dd-list hf-subMenu"><li class><a class href="https://www.apolloclinic.com/for-patients/services/consultations">Consultations</a><ul class="dd-list hf-subMenu"><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/consultations/general-medicine">General Medicine</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/consultations/gynaecology-and-obstetrics">Gynaecology and Obstetrics</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/consultations/paediatrics">Paediatrics</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/consultations/dermatology">Dermatology</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/consultations/ent">ENT</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/consultations/cardiology">Cardiology</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/consultations/orthopaedic">Orthopaedics</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/consultations/dentistry">Dentistry</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/consultations/diabetology">Diabetology</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/consultations/endocrinology">Endocrinology</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/consultations/gastroenterology">Gastroenterology</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/consultations/nephrology">Nephrology</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/consultations/nutrition-dietetics">Nutrition and Dietetics</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/consultations/ophthalmology">Ophthalmology</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/consultations/psychiatry">Psychiatry</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/consultations/pulmonology">Pulmonology</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/consultations/urology">Urology</a></ul><li class><a class href="https://www.apolloclinic.com/for-patients/services/diagnostics">Diagnostics</a><ul class="dd-list hf-subMenu"><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/diagnostics/laboratory-condition">Laboratory </a><li class><a class href="https://www.apolloclinic.com/for-patients/services/diagnostics/imaging-services">Imaging Services</a><ul class="dd-list hf-subMenu"><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/diagnostics/imaging-services/2d-echo">2D Echo</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/diagnostics/imaging-services/ultrasound">Ultrasound</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/diagnostics/imaging-services/x-ray">X- Ray</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/diagnostics/imaging-services/mammography">Mammography</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/diagnostics/imaging-services/sonomammography">Sonomammography</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/diagnostics/imaging-services/dexa">Dexa</a></ul><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/diagnostics/ecg-test">ECG</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/diagnostics/tmt">TMT</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/diagnostics/genetic-screening-tests">Genetic Screening Tests</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/diagnostics/lung-function-tests">Lung Function Tests </a></ul><li class><a class href="https://www.apolloclinic.com/for-patients/services/health-checks">Health checks</a><ul class="dd-list hf-subMenu"><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/health-checks/apollo-health-check">Apollo Health Check</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/health-checks/apollo-heart-check-up">Apollo Heart Check</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/health-checks/apollo-whole-body-check">Apollo Whole Body check</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/health-checks/apollo-master-health-check">Apollo Master Health Check</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/health-checks/apollo-executive-health-check">Apollo Executive Health Check</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/health-checks/apollo-child-health-check">Apollo Child Health Check</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/health-checks/apollo-personalized-health-check">Apollo Personalized Health Check</a><li class><a class href="javascript:void(0)">Age Wise Health Check For Women</a><ul class="dd-list hf-subMenu"><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/health-checks/age-wise-health-check-for-women/for-women-in-20-s">For women in 20's</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/health-checks/age-wise-health-check-for-women/for-women-in-30-s">For women in 30's</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/health-checks/age-wise-health-check-for-women/for-women-in-40-s">For women in 40's</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/health-checks/age-wise-health-check-for-women/for-women-in-50-s">For women in 50's</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/health-checks/age-wise-health-check-for-women/for-teens">For Teens</a></ul><li class><a class href="javascript:void(0)">Quick Check</a><ul class="dd-list hf-subMenu"><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/health-checks/quick-check/quick-check-master">Quick Check Master</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/health-checks/quick-check/quick-check-women">Quick Check Women</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/health-checks/quick-check/quick-check-heart">Quick Check Heart</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/health-checks/quick-check/quick-check-executive">Quick Check Executive</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/health-checks/quick-check/quick-check-child">Quick Check Child</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/health-checks/quick-check/quick-check-whole-body">Quick Check Whole Body</a></ul></ul><li class="no-child"><a class href="http://www.apollopharmacy.in">Pharmacy</a><li class><a class href="https://www.apolloclinic.com/for-patients/services/dental">Dental</a><ul class="dd-list hf-subMenu"><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/dental/dental-braces">Dental Braces</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/dental/root-canal-treatment">Root Canal Treatment</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/dental/dental-implants">Dental Implants</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/dental/teeth-scaling-and-cleaning">Teeth scaling and cleaning</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/dental/teeth-whitening">Teeth Whitening</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/dental/tooth-extraction">Tooth extraction</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/dental/crowning">Crowning</a></ul><li class><a class href="https://www.apolloclinic.com/for-patients/services/physiotherapy">Physiotherapy</a><ul class="dd-list hf-subMenu"><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/physiotherapy/back-pain">Back pain</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/physiotherapy/neck-pain">Neck Pain</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/physiotherapy/knee-pain">Knee Pain</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/physiotherapy/rehabilitation">Rehabilitation</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/physiotherapy/shoulder-pain">Shoulder Pain</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/physiotherapy/carpal-tunnel-syndrome">Carpal Tunnel Syndrome</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/physiotherapy/tennis-elbow">Tennis Elbow</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/physiotherapy/repetitive-strain-injuries">Repetitive Strain Injuries </a></ul><li class><a class href="https://www.apolloclinic.com/for-patients/services/specialty-clinics">Specialty Clinics</a><ul class="dd-list hf-subMenu"><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/specialty-clinics/diabetes">Diabetes</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/specialty-clinics/allergy-and-asthma">Allergy & Asthma</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/specialty-clinics/menstrual">Menstrual</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/specialty-clinics/arthritis-clinic">Arthritis</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/specialty-clinics/acidity-clinic">Acidity</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/specialty-clinics/blood-pressure">Blood Pressure</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/specialty-clinics/back-and-neck-pain">Back & Neck Pain</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/specialty-clinics/breast">Breast</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/specialty-clinics/ear-pain">Ear Pain</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/specialty-clinics/fertility">Fertility</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/specialty-clinics/hair-loss">Hair Loss</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/specialty-clinics/hearing">Hearing</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/specialty-clinics/menopause">Menopause</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/specialty-clinics/pediatrics">Pediatrics</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/specialty-clinics/prostate">Prostate</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/specialty-clinics/skin">Skin</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/specialty-clinics/urinary-infection">Urinary Infection</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/specialty-clinics/weight-management">Weight Management</a></ul><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/sugar">Sugar</a><li class><a class href="https://www.apolloclinic.com/for-patients/services/treatment-room">Treatment Room</a><ul class="dd-list hf-subMenu"><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/treatment-room/dressings-plaster">Dressings / Plaster</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/treatment-room/abscess-boils-drainage">Abscess / Boils drainage</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/treatment-room/stitches">Stitches</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/treatment-room/nebulization">Nebulization</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/treatment-room/copper-t-insertion">Copper T insertion</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/treatment-room/injection-services">Injection Services</a></ul><li class><a class href="https://www.apolloclinic.com/for-patients/services/vaccinations">Vaccinations</a><ul class="dd-list hf-subMenu"><li class><a class href="javascript:void(0)">Children</a><ul class="dd-list hf-subMenu"><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/vaccinations/children/bcg">BCG</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/vaccinations/children/oral-polio-vaccine">Oral Polio Vaccine</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/vaccinations/children/hepatitis-a-and-b">Hepatitis A & B</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/vaccinations/children/dtp">DTP</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/vaccinations/children/haemophilus-influenzae-type-b-hib">Haemophilus influenzae type b (Hib)</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/vaccinations/children/rotavirus">Rotavirus</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/vaccinations/children/children-pneumonia">Pneumonia</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/vaccinations/children/measles-mumps-and-rubella">Measles , Mumps and Rubella</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/vaccinations/children/chicken-pox">Chicken Pox</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/vaccinations/children/typhoid">Typhoid</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/vaccinations/children/tetanus">Tetanus</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/vaccinations/children/influenza">Influenza</a></ul><li class><a class href="javascript:void(0)">Adult</a><ul class="dd-list hf-subMenu"><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/vaccinations/adult/influenza-adult">Influenza </a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/vaccinations/adult/chicken-pox-adult">Chicken Pox </a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/vaccinations/adult/cervical-cancer-prevention-female">Cervical Cancer Prevention- Female </a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/vaccinations/adult/pneumonia">Pneumonia</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/vaccinations/adult/meningitis">Meningitis</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/vaccinations/adult/hepatitis-a">Hepatitis A</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/vaccinations/adult/hepatitis-b">Hepatitis B</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/vaccinations/adult/haemophilus-influenzae-type-b-(hib)">Haemophilus influenzae type b (Hib)</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/vaccinations/adult/rabies">Rabies</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/vaccinations/adult/typhoid-adult">Typhoid</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/vaccinations/adult/tetanus-adult">Tetanus</a></ul></ul><li class><a class href="https://www.apolloclinic.com/for-patients/services/health-at-home">Health @ Home</a><ul class="dd-list hf-subMenu"><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/health-at-home/home-sample-collection">Home Sample Collection</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/health-at-home/health-at-home-packages">Health @ Home Packages</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/health-at-home/diabetic-screen-advanced">Diabetic Screen Advanced</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/health-at-home/diabetic-screen-basic">Diabetic Screen Basic</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/health-at-home/healthy-body-packages">Healthy Body Packages</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/health-at-home/senior-citizen-female">Senior Citizen Female</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/health-at-home/senior-citizen-male">Senior Citizen Male</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/health-at-home/whole-body-pack">Whole Body Pack</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/health-at-home/womens-pack">Women's Pack</a></ul><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/services/urgent-medical-care-facility">Urgent Medical Care Facility</a></ul><li class><a class href="javascript:void(0)">Patient Education</a><ul class="dd-list hf-subMenu"><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/patient-education/glossary">Glossary</a></ul><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/find-a-doctor">Find a Doctor</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/find-a-symptom">Find a Symptom</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/book-a-test">Book a Test</a><li class="no-child"><a class href="https://www.apolloclinic.com/health-tips">Health Tips</a><li class="no-child"><a class href="https://www.apolloclinic.com/phr/">Personal Health Record</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/faqs">FAQs</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-patients/online-lab-report">Online Lab Report</a></ul><li class="no-child"><a class href="https://www.apolloclinic.com/for-corporates">For Corporates</a><li class><a class href="https://www.apolloclinic.com/for-franchisee">For Franchisees</a><ul class="dd-list hf-subMenu"><li class="no-child"><a class href="https://www.apolloclinic.com/for-franchisee/potential-in-health-care">Potential in Health care</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-franchisee/who-can-be-a-franchisee">Who Can be a Franchisee</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-franchisee/franchising-support">Franchising Support</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-franchisee/available-franchisee-location">Available Franchisee</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-franchisee/franchisees-enquiry">Franchisees Enquiry</a><li class="no-child"><a class href="https://www.apolloclinic.com/for-franchisee/faqs-franchise">FAQs</a></ul><li class><a class href="https://www.apolloclinic.com/news-media/media">News & Media</a><ul class="dd-list hf-subMenu"><li class="no-child"><a class href="https://www.apolloclinic.com/news-media/media">Media</a><li class="no-child"><a class href="javascript:void(0)">Events</a><li class="no-child"><a class href="https://www.apolloclinic.com/news-media/online-press-release">Online press release</a><li class="no-child"><a class href="https://www.apolloclinic.com/assets/uploads/news/apollo-case-study-2017.pdf" download="https://www.apolloclinic.com/assets/uploads/news/apollo-case-study-2017.pdf">Case Study</a></ul><li class="no-child"><a class href="https://www.apolloclinic.com/contact-us">Contact Us</a><li class="no-child"><a class href="https://www.apolloclinic.com/blog/">Blog</a><li class="no-child"><a class href="https://www.apolloclinic.com/health-check-packages/">Health Check Packages</a> </ul>
+        <!-- <button class="view-all" > Book an Appointment</button> -->
+        <button type="button" class="button_glow site_search" style="background-color: #1D378C; color: white; font-weight: bolder; border-radius: 6px;">Book an Appointment</button>
+        <!-- <input type="button" id="button" class="downloadButton login_btn full_width" value="Book an Appointment" /> -->
+    </div>
+
+
+</div>
+</div>
+</nav>
+<marquee attribute_name = "attribute_value"....more attributes>
+  Your body is your most valuable asset protect it with the comprehensive health check
+ </marquee>
+
+<div id="myCarousel" class="carousel slide slider-carousel" data-ride="carousel">
+
+<!-- <ol class="carousel-indicators">
+<li data-target="#myCarousel" data-slide-to="0" class=" active "></li>
+<li data-target="#myCarousel" data-slide-to="1" class></li>
+<li data-target="#myCarousel" data-slide-to="2" class></li>
+<li data-target="#myCarousel" data-slide-to="3" class></li>
+<li data-target="#myCarousel" data-slide-to="4" class></li>
+<li data-target="#myCarousel" data-slide-to="5" class></li>
+<li data-target="#myCarousel" data-slide-to="6" class></li>
+<li data-target="#myCarousel" data-slide-to="7" class></li>
+
+</ol> -->
+<div class="carousel-inner carousel-main" role="listbox">
+<!-- <div class="item  active  shcls">
+<div class="slide-image"><a href="#" target="_blank"><img src="https://www.apolloclinic.com/assets/images/banners/6414_WebBanner(4).jpg" alt="slide" loading="lazy"></a></div>
+</div> -->
+<!-- <div class="item  shcls">
+<div class="slide-image"><a href="https://www.apolloclinic.com/health-check-packages/" target="_blank"><img src="https://media.istockphoto.com/id/1140209223/photo/white-big-healthy-tooth-and-different-tools-for-dental-care-and-stethoscope-on-gradient.jpg?s=1024x1024&w=is&k=20&c=igvZMMGD0-IxzX83IVK-fgJA63pOsB3qwf2xb7gOEEg=" alt="slide" loading="lazy"></a></div>
+</div> -->
+<div class="item active shcls">
+<div class="slide-image"><a href="https://www.apolloclinic.com/health-check-packages/" target="_blank"><img src="https://www.apolloclinic.com/assets/images/banners/3030_ear-check-clinic.webp" alt="slide" loading="lazy"></a></div>
+</div>
+<div class="item  shcls">
+<div class="slide-image"><a href="https://www.apolloclinic.com/health-check-packages/" target="_blank"><img src="https://www.apolloclinic.com/assets/images/banners/576_compransive-health-check.webp" alt="slide" loading="lazy"></a></div>
+</div>
+<div class="item  shcls">
+<div class="slide-image"><a href="https://www.apolloclinic.com/health-check-packages/" target="_blank"><img src="https://www.apolloclinic.com/assets/images/banners/2996_health-check-packages.webp" alt="slide" loading="lazy"></a></div>
+</div>
+<div class="item  shcls">
+<div class="slide-image"><a href="https://www.apolloclinic.com/health-check-packages/" target="_blank"><img src="https://www.apolloclinic.com/assets/images/banners/6172_raidology-test.webp" alt="slide" loading="lazy"></a></div>
+</div>
+<div class="item  shcls">
+<div class="slide-image"><a href="https://www.apolloclinic.com/health-check-packages/" target="_blank"><img src="https://www.apolloclinic.com/assets/images/banners/4418_lab-test.webp" alt="slide" loading="lazy"></a></div>
+</div>
+<div class="item  shcls">
+<div class="slide-image"><a href="https://www.apolloclinic.com/for-franchisee" target="_blank"><img src="https://www.apolloclinic.com/assets/images/banners/9032_franchisee-new.webp" alt="slide" loading="lazy"></a></div>
+</div>
+</div>
+</div>
+
+
+<div id="myCarousel2" class="carousel slide slider-carousel" style data-ride="carousel">
+
+<!-- <ol class="carousel-indicators">
+<li data-target="#myCarousel" data-slide-to="0" class=" active "></li>
+<li data-target="#myCarousel" data-slide-to="1" class></li>
+<li data-target="#myCarousel" data-slide-to="2" class></li>
+<li data-target="#myCarousel" data-slide-to="3" class></li>
+<li data-target="#myCarousel" data-slide-to="4" class></li>
+<li data-target="#myCarousel" data-slide-to="5" class></li>
+<li data-target="#myCarousel" data-slide-to="6" class></li>
+<li data-target="#myCarousel" data-slide-to="7" class></li>
+
+</ol> -->
+<div class="carousel-inner carousel-main" role="listbox">
+<!-- <div class="item  active  shcls">
+<a href="#"><div class="slide-image" style="background-image:url('https://www.apolloclinic.com/assets/images/banners/6414_WebBanner(4).jpg')"></div></a>
+</div> -->
+<!-- <div class="item  shcls">
+<a href="https://www.apolloclinic.com/health-check-packages/"><div class="slide-image" style="background-image:url('https://media.istockphoto.com/id/1140209223/photo/white-big-healthy-tooth-and-different-tools-for-dental-care-and-stethoscope-on-gradient.jpg?s=1024x1024&w=is&k=20&c=igvZMMGD0-IxzX83IVK-fgJA63pOsB3qwf2xb7gOEEg=')"></div></a>
+</div> -->
+<div class="item active shcls">
+<a href="https://www.apolloclinic.com/health-check-packages/"><div class="slide-image" style="background-image:url('https://www.apolloclinic.com/assets/images/banners/3030_ear-check-clinic.webp')"></div></a>
+</div>
+<div class="item  shcls">
+<a href="https://www.apolloclinic.com/health-check-packages/"><div class="slide-image" style="background-image:url('https://www.apolloclinic.com/assets/images/banners/576_compransive-health-check.webp')"></div></a>
+</div>
+<div class="item  shcls">
+<a href="https://www.apolloclinic.com/health-check-packages/"><div class="slide-image" style="background-image:url('https://www.apolloclinic.com/assets/images/banners/2996_health-check-packages.webp')"></div></a>
+</div>
+<div class="item  shcls">
+<a href="https://www.apolloclinic.com/health-check-packages/"><div class="slide-image" style="background-image:url('https://www.apolloclinic.com/assets/images/banners/6172_raidology-test.webp')"></div></a>
+</div>
+<div class="item  shcls">
+<a href="https://www.apolloclinic.com/health-check-packages/"><div class="slide-image" style="background-image:url('https://www.apolloclinic.com/assets/images/banners/4418_lab-test.webp')"></div></a>
+</div>
+<div class="item  shcls">
+<a href="https://www.apolloclinic.com/for-franchisee"><div class="slide-image" style="background-image:url('https://www.apolloclinic.com/assets/images/banners/9032_franchisee-new.webp')"></div></a>
+</div>
+
+</div>
+
+<div class="social-share-icons">
+
+</div>
+</div>
+
+
+<div class="container online_report_container" id="myCarousel">
+<!-- <div class="online_report_login_container"> -->
+<!-- <h3>Online Report </h3>
+<div class="online_report_form">
+<form action="download.php" method="post" name="form1" id="form1" target="_blank">
+
+<div class="form_field full_width">
+<input type="text" name="visit_id" id="visit_id" placeholder="User Name" class="inpt" style="border: 1px solid #ccc;"> <span class="user_icon"></span>
+</div>
+<div class="form_field full_width">
+<input type="password" name="passcode" id="passcode" placeholder="Password" autocomplete="off" class="inpt" style="border: 1px solid #ccc;" /> <span class="password_icon"></span>
+</div>
+<span id="spanDownload"><p>(Please refer to bill for user name & password)</p></span>
+</div>
+<input type="button" id="button" class="downloadButton login_btn full_width" value="Submit" />
+
+</form>
+</div> -->
+
+</div>
+</div>
+<div class="container marketing">
+<!-- <span id="myBtn" style="cursor: pointer"><a href="#" class data-toggle="modal" data-target="#book_model"><i class="book_appointment"></i><img src="https://www.apolloclinic.com/assets/images/book-an-appt.gif" class="book-app" width="32" height="200" alt="Book an appointment" /></a></span> -->
+<!-- <div style="position: fixed; right: 3px; bottom: 180px; cursor: pointer; font-family: Arial,Helvetica,sans-serif; z-index: 999"><a href="https://wa.me/917066028648?text=Hi, I contacted you Through your website."><p class="wa__btn_popup_icon"><img src="https://www.apolloclinic.com/assets/images/whatsapp-icon1.png" alt width="50" height="50"></p></a></div> -->
+<div style="position: fixed; bottom: 60px; cursor: pointer; font-family: Arial,Helvetica,sans-serif; z-index: 999; float: left; left: 10px;"><a href="https://www.apolloclinic.com/ct-mri-booking/" target="_blank" rel="nofollow"><p class="wa__btn_popup_icon"><img src="https://www.apolloclinic.com/assets/images/whatsapp-icon1.png" alt="radilogy" width="50" height="50"></p></a></div>
+<div style="position: fixed; bottom: 120px; cursor: pointer; font-family: Arial,Helvetica,sans-serif; z-index: 999; float: left; left: 10px;"><a href="https://www.apolloclinic.com/ct-mri-booking/" target="_blank" rel="nofollow"><p class="wa__btn_popup_icon"><img src="https://www.thejunglii.com/assets/img/google-maps.png" alt="radilogy" width="50" height="50"></p></a></div>
+<div style="position: fixed; bottom: 180px; cursor: pointer; font-family: Arial,Helvetica,sans-serif; z-index: 999; float: left; left: 10px;"><a href="https://www.apolloclinic.com/ct-mri-booking/" target="_blank" rel="nofollow"><p class="wa__btn_popup_icon"><img src="https://www.thejunglii.com/assets/img/telephone.png" alt="radilogy" width="50" height="50"></p></a></div>
+
+<br>
+
+
+<div class="container online_report_container online-report-mobile" style="background: #1D378C; text-align: center;border-radius: 5px;padding: 10px;">
+<a href="https://www.apolloclinic.com/for-patients/services/vaccinations" class="service_link" style="color: #fff;font-size: 22px;font-weight: 500;">Adult Vaccination</a>
+</div><br>
+<div class="services-page">
+<div class="row">
+<h1 class="h1-services">Our Services</h1>
+<div class="services-container web-container">
+<div class="col-lg-15 col-md-15 col-sm-15 services-box">
+<div class="services-img"><img alt="Consultations" src="./assets/consultation.svg" width="150" height="150"></div>
+<h2>Consultations</h2>
+<p></p>
+<a href="https://www.apolloclinic.com/for-patients/services/consultations" class="service_link"></a>
+</div>
+<div class="col-lg-15 col-md-15 col-sm-15 services-box">
+<div class="services-img"><img alt="Diagnostics" src="./assets/diagnosys.svg" width="150" height="150"></div>
+<h2>Diagnostics</h2>
+<p></p>
+<a href="https://www.apolloclinic.com/for-patients/services/diagnostics" class="service_link"></a>
+</div>
+<div class="col-lg-15 col-md-15 col-sm-15 services-box">
+<div class="services-img"><img alt="Health Checks" src="./assets/health_check.svg" width="150" height="150"></div>
+<h2>Health Checks</h2>
+<p></p>
+<a href="https://www.apolloclinic.com/for-patients/services/health-checks" class="service_link"></a>
+</div>
+<div class="col-lg-15 col-md-15 col-sm-15 services-box">
+<div class="services-img"><img alt="Dental Care" src="./assets/research.svg" width="150" height="150"></div>
+<h2>Research Centre</h2>
+<p></p>
+<a href="https://www.apolloclinic.com/for-patients/services/dental" class="service_link"></a>
+</div>
+<div class="col-lg-15 col-md-15 col-sm-15 services-box">
+<div class="services-img"><img alt="Diabetes Care" src="./assets/vaccination.svg" width="150" height="150"></div>
+<h2>Diabetes Care</h2>
+<p></p>
+<a href="https://www.apolloclinic.com/for-patients/services/consultations/diabetology" class="service_link"></a>
+</div>
+<div class="col-lg-15 col-md-15 col-sm-15 services-box">
+<div class="services-img"><img alt="Treatment Rooms" src="./assets/treatment.svg" width="150" height="150"></div>
+<h2>Treatment Rooms</h2>
+<p></p>
+<a href="https://www.apolloclinic.com/for-patients/services/treatment-room" class="service_link"></a>
+</div>
+<div class="col-lg-15 col-md-15 col-sm-15 services-box">
+<div class="services-img"><img alt="Vaccinations" src="./assets/vaccination.svg" width="150" height="150"></div>
+<h2>Vaccinations</h2>
+<p></p>
+<a href="https://www.apolloclinic.com/for-patients/services/vaccinations" class="service_link"></a>
+</div>
+<div class="col-lg-15 col-md-15 col-sm-15 services-box">
+<div class="services-img"><img alt="Health @ Home" src="./assets/home.svg" width="150" height="150"></div>
+<h2>Health @ Home</h2>
+<p></p>
+<a href="https://www.apolloclinic.com/for-patients/services/health-at-home" class="service_link"></a>
+</div>
+</div>
+</div>
+</div>
+<div class="container online_report_container online-report-mobile">
+<div class="online_report_login_container">
+<div data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample">
+<h3>
+Online Report <img src="https://www.apolloclinic.com/assets/images/Down_Arrow_Icon.png" alt style="float: right; margin-right: 15px;" width="20" height="20">
+</h3>
+</div>
+<div class="collapse" id="collapseExample2">
+<div class="online_report_form">
+<form action="download.php" method="post" name="form2" id="formDownload" target="_blank">
+
+<div class="form_field full_width">
+<input type="text" name="visit_id" id="visit_id2" placeholder="User Name" class="inpt" style="border: 1px solid #ccc;"> <span class="user_icon"></span>
+</div>
+<div class="form_field full_width">
+<input type="password" name="passcode" id="passcode2" placeholder="Password" autocomplete="off" class="inpt" style="border: 1px solid #ccc;" /> <span class="password_icon"></span>
+</div>
+<span id="spanDownload2"><p>(Please refer to bill for user name & password)</p></span>
+</div>
+<input type="button" id="button" class="downloadButton2 login_btn full_width" value="Submit" />
+
+</form>
+</div>
+</div>
+</div>
+<div class="services-page">
+<div class="row">
+<div class="flexslider mobile-container" style="display: none;">
+<ul class="slides">
+<li>
+<img alt="Consultations" src="assets/images/services/9281_Consultation.png" /> Clinic
+<h2>Consultations</h2>
+<p></p>
+<a href="services/consultation" class="service_link"></a>
+</li>
+<li>
+<img alt="Diagnostics" src="assets/images/services/8845_diagnostic.png" /> Clinic
+<h2>Diagnostics</h2>
+<p></p>
+<a href="services/diagnostic" class="service_link"></a>
+</li>
+<li>
+<img alt="Health Checks" src="assets/images/services/1737_health-check.png" /> Clinic
+<h2>Health Checks</h2>
+<p></p>
+<a href="services/health check " class="service_link"></a>
+</li>
+<li>
+<img alt="Dental Care" src="assets/images/services/6484_dental-care.png" /> Clinic
+<h2>Dental Care</h2>
+<p></p>
+<a href="services/dental care" class="service_link"></a>
+</li>
+<li>
+<img alt="Diabetes Care" src="assets/images/services/5226_DiabeticTestVer_2.png" /> Clinic
+<h2>Diabetes Care</h2>
+<p></p>
+<a href="services/diabetes care" class="service_link"></a>
+</li>
+<li>
+<img alt="Treatment Rooms" src="assets/images/services/3891_treatment-room.png" /> Clinic
+<h2>Treatment Rooms</h2>
+<p></p>
+<a href="services/treatment room" class="service_link"></a>
+</li>
+<li>
+<img alt="Vaccinations" src="assets/images/services/1869_vaccination.png" /> Clinic
+<h2>Vaccinations</h2>
+<p></p>
+<a href="services/vaccinations" class="service_link"></a>
+</li>
+<li>
+<img alt="Health @ Home" src="assets/images/services/8190_health-at-home.png" /> Clinic
+<h2>Health @ Home</h2>
+<p></p>
+<a href="services/health at home" class="service_link"></a>
+</li>
+</ul>
+</div>
+<div class="row">
+<div class="col-lg-6 col-md-6 col-sm-12   our-patients-main">
+<div class="our-patients-speak">
+<h3>Our Patient's Speak</h3>
+<div class="col-lg-12 col-md-12 our-patients-speak-carousel">
+<div id="carousel-demo" class="carousel slide" data-interval="3000" data-ride="carousel">
+
+<div class="carousel-inner">
+<div class="item active ">
+<div class="our-patient-speak">
+<div class="our-patient-caption">
+In my experience, here at the Velachery clinic, I found the treatment given to patients to be excellent. All reports were ready at the committed time, and everything was so efficient and adequately taken care of, that I am considering making the Velachery clinic my regular source of care.
+<h4>Aarif Mohaned - Velachery</h4>
+</div>
+</div>
+</div>
+<div class="item">
+<div class="our-patient-speak">
+<div class="our-patient-caption">
+My experience at the Indirapuram Clinic was very good. I particularly liked the good management and their fast services. From getting appointment, cleanliness, time of billing, getting results to the waiting time, everything was very efficient. I will surely make this clinic my regular source of care.
+<h4>Abhishek Mahajan - </h4>
+</div>
+</div>
+</div>
+<div class="item">
+<div class="our-patient-speak">
+<div class="our-patient-caption">
+I visited the Chanda Nagar clinic for my treatment. The staff was very supportive and provided with all the necessary information. I liked the technical expertise provided by the nurses, phlebotomist and radiology technicians. The services were fast and reports were ready on time.
+<h4>Amareswara - Chanda Nagar</h4>
+</div>
+</div>
+</div>
+</div>
+
+<a class="left carousel-control" style="width: 0% !important; left: -20px; top: 50px !important;" href="#carousel-demo" data-slide="prev">
+<span class="fa fa-chevron-left carclinicleft"></span></a>
+<a class="right carousel-control" style="width: 0% !important; top: 50px !important;" href="#carousel-demo" data-slide="next">
+<span class="fa fa-chevron-right carclinicright"></span></a>
+</div>
+<a href="https://www.apolloclinic.com/testimonials" class="view-all">View all</a>
+</div>
+</div>
+</div>
+<div class="col-lg-6 col-md-6 col-sm-12   our-patients-main">
+  <div class="our-patients-speak">
+  <h3>Our Patient's Speak</h3>
+  <div class="col-lg-12 col-md-12 our-patients-speak-carousel">
+  <div id="carousel-demo" class="carousel slide" data-interval="3000" data-ride="carousel">
+  
+  <div class="carousel-inner">
+  <div class="item active ">
+  <div class="our-patient-speak">
+  <div class="our-patient-caption">
+  In my experience, here at the Velachery clinic, I found the treatment given to patients to be excellent. All reports were ready at the committed time, and everything was so efficient and adequately taken care of, that I am considering making the Velachery clinic my regular source of care.
+  <h4>Aarif Mohaned - Velachery</h4>
+  </div>
+  </div>
+  </div>
+  <div class="item">
+  <div class="our-patient-speak">
+  <div class="our-patient-caption">
+  My experience at the Indirapuram Clinic was very good. I particularly liked the good management and their fast services. From getting appointment, cleanliness, time of billing, getting results to the waiting time, everything was very efficient. I will surely make this clinic my regular source of care.
+  <h4>Abhishek Mahajan - </h4>
+  </div>
+  </div>
+  </div>
+  <div class="item">
+  <div class="our-patient-speak">
+  <div class="our-patient-caption">
+  I visited the Chanda Nagar clinic for my treatment. The staff was very supportive and provided with all the necessary information. I liked the technical expertise provided by the nurses, phlebotomist and radiology technicians. The services were fast and reports were ready on time.
+  <h4>Amareswara - Chanda Nagar</h4>
+  </div>
+  </div>
+  </div>
+  </div>
+  
+  <a class="left carousel-control" style="width: 0% !important; left: -20px; top: 50px !important;" href="#carousel-demo" data-slide="prev">
+  <span class="fa fa-chevron-left carclinicleft"></span></a>
+  <a class="right carousel-control" style="width: 0% !important; top: 50px !important;" href="#carousel-demo" data-slide="next">
+  <span class="fa fa-chevron-right carclinicright"></span></a>
+  </div>
+  <a href="https://www.apolloclinic.com/testimonials" class="view-all">View all</a>
+  </div>
+  </div>
+  </div>
+</div>
+</div>
+<style>
+.carclinicright
+{
+ font-size: 25px;
+}
+.carclinicleft
+{
+ font-size: 25px;
+}
+@media screen and (max-width: 699px) and (min-width: 320px) {
+.carclinicright
+{
+ font-size: 25px;
+ margin-top:80px;
+}
+.carclinicleft
+{
+ font-size: 25px;
+ margin-top:80px;
+}
+}
+</style>
+<script defer src="assets/js/jquery.flexslider.js"></script>
+<script type="text/javascript">
+    $(window).load(function(){
+      $('.flexslider').flexslider({
+        animation: "slide",
+        slideshowSpeed: 100,
+            animationSpeed: 100, 
+
+        start: function(slider){
+          $('body').removeClass('loading');
+        }
+      });
+    });
+
+	// jQuery
+	function jqUpdateSize(){
+    	// Get the dimensions of the viewport
+	    var width = $(window).width();
+    	var height = $(window).height();
+    	if(width > 100){
+    		$('.web-container').removeClass('hide').addClass('show');
+    		$('.mobile-container').removeClass('show').addClass('hide');
+    	} else if(width < 100){
+    		$('.mobile-container').removeClass('hide').addClass('show');
+    		$('.web-container').removeClass('show').addClass('hide');
+    	}
+	    $('#jqWidth').html(width);
+    	$('#jqHeight').html(height);
+	};
+	$(document).ready(jqUpdateSize);    // When the page first loads
+	$(window).resize(jqUpdateSize);     // When the browser changes size
+  </script>
+</div>
+</div>
+<div class="full_width">
+<div class="footer-hide" style="margin-left: 140px; margin-top: 10px;">
+<div class="btn btn-primary"><a id="displayText" href="javascript:toggle();" style="color: #fff; text-decoration: none; float: left; margin-top: 3px; width: 95px;">View more (+)</a></div>
+</div>
+<div id="toggleText" style="display: none">
+<div class="card card-block">
+<div class="footer-top"></div>
+<div class="container footer-container">
+<footer>
+<div class="full_width">
+<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 footer-container-list">
+<div class="col-lg-2 col-md-4 col-xs-12 col-sm-6">
+<h3>Consultations</h3>
+<ul>
+<li><a href="https://www.apolloclinic.com/for-patients/services/consultations/general-medicine">General Medicine</a></li>
+<li><a href="https://www.apolloclinic.com/for-patients/services/consultations/gynaecology-and-obstetrics">Gynaecology & Obstetrics</a></li>
+<li><a href="https://www.apolloclinic.com/for-patients/services/consultations/paediatrics">Paediatrics</a></li>
+<li><a href="https://www.apolloclinic.com/for-patients/services/consultations/dermatology">Dermatology</a></li>
+<li><a href="https://www.apolloclinic.com/for-patients/services/consultations/ent">ENT</a></li>
+</ul>
+<a href="https://www.apolloclinic.com/for-patients/services/consultations"><p style="margin-right: 15px; float:right;padding: 0px 10px;">View More</p></a>
+</div>
+<div class="col-lg-2 col-md-4 col-xs-12 col-sm-6">
+<h3>Diagnostics</h3>
+<ul>
+<li><a href="https://www.apolloclinic.com/for-patients/services/diagnostics/laboratory-condition">Laboratory</a></li>
+<li><a href="https://www.apolloclinic.com/for-patients/services/diagnostics/imaging-services/x--ray">X-Ray</a></li>
+<li><a href="https://www.apolloclinic.com/for-patients/services/diagnostics/ecg-test">ECG</a></li>
+<li><a href="https://www.apolloclinic.com/for-patients/services/diagnostics/tmt">TMT</a></li>
+<li><a href="https://www.apolloclinic.com/for-patients/services/diagnostics/genetic-screening-tests">Genetic Screening Tests</a></li>
+</ul>
+<a href="https://www.apolloclinic.com/for-patients/services/diagnostics"><p style="margin-right: 15px; float:right;padding: 0px 10px;">View More</p></a>
+</div>
+<div class="col-lg-2 col-md-4 col-xs-12 col-sm-6 footer-col-3">
+<h3>Health Checks</h3>
+<ul>
+<li><a href="https://www.apolloclinic.com/for-patients/services/health-checks/apollo-health-check">Apollo Health Check</a></li>
+<li><a href="https://www.apolloclinic.com/for-patients/services/health-checks/apollo-heart-check-up">Apollo Heart Check</a></li>
+<li><a href="https://www.apolloclinic.com/for-patients/services/health-checks/apollo-whole-body-check">Apollo Whole Body Check</a></li>
+<li><a href="https://www.apolloclinic.com/for-patients/services/health-checks/apollo-master-health-check">Apollo Master Health Check</a></li>
+<li><a href="https://www.apolloclinic.com/for-patients/services/health-checks/apollo-executive-health-check">Apollo Executive Health Check</a></li>
+</ul>
+<a href="https://www.apolloclinic.com/for-patients/services/health-checks"><p style="margin-right: 15px; float:right;padding: 0px 10px;">View More</p></a>
+</div>
+<div class="col-lg-2 col-md-4 col-xs-12 col-sm-6">
+<h3>Speciality Clinics</h3>
+<ul>
+<li><a href="https://www.apolloclinic.com/for-patients/services/specialty-clinics/diabetes">Diabetes</a></li>
+<li><a href="https://www.apolloclinic.com/for-patients/services/specialty-clinics/allergy-and-asthma">Allergy & Asthma</a></li>
+<li><a href="https://www.apolloclinic.com/for-patients/services/specialty-clinics/menstrual">Menstrual Health</a></li>
+<li><a href="https://www.apolloclinic.com/for-patients/services/specialty-clinics/arthritis-clinic">Arthritis</a></li>
+<li><a href="https://www.apolloclinic.com/for-patients/services/specialty-clinics/blood-pressure">Blood Pressure</a></li>
+</ul>
+<a href="https://www.apolloclinic.com/for-patients/services/specialty-clinics"><p style="margin-right: 15px; float:right;padding: 0px 10px;">View More</p></a>
+</div>
+<div class="col-lg-2 col-md-4 col-xs-12 col-sm-6">
+<h3>About Us</h3>
+<ul>
+<li><a href="https://www.apolloclinic.com/about-apollo-clinic">About Apollo Clinic</a></li>
+<li><a href="https://www.apolloclinic.com/about-ahll">About AHLL</a></li>
+<li><a href="https://www.apolloclinic.com/about-apollo-group">About Apollo Group</a></li>
+<li><a href="https://www.apolloclinic.com/our-chairmans-profile">Our Chairman's Profile</a></li>
+<li><a href="https://www.apolloclinic.com/our-management-team">Our Management Team</a></li>
+</ul>
+</div>
+<div class="col-lg-2 col-md-4 col-xs-12 col-sm-6">
+<h3>Contact Us</h3>
+<ul>
+<li><a href="https://www.apolloclinic.com/contact-us">Contact</a></li>
+<li><a href="https://www.apolloclinic.com/careers">Careers</a></li>
+<li><a href="http://nps.apolloclinic.com:8080/">Feedback</a></li>
+<li><a href="https://www.apollohl.com/advertise-with-us/">Advertise With Us</a></li>
+<li><a href="https://apokosrehab.com">ApoKOS Rehab</a></li>
+<li><a href="https://www.apolloclinic.com/safety-quiz">Safety Quiz</a></li>
+</ul>
+</div>
+</div>
+</div>
+</footer>
+</div>
+</div>
+</div>
+<div class="footer-top"></div>
+<div class="container footer-container footer-view">
+<footer>
+<div class="full_width">
+<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 footer-container-list">
+<div class="col-lg-2 col-md-4 col-xs-12 col-sm-6">
+<h3>Consultations</h3>
+<ul>
+<li><a href="https://www.apolloclinic.com/for-patients/services/consultations/general-medicine">General Medicine</a></li>
+<li><a href="https://www.apolloclinic.com/for-patients/services/consultations/gynaecology-and-obstetrics">Gynaecology & Obstetrics</a></li>
+<li><a href="https://www.apolloclinic.com/for-patients/services/consultations/paediatrics">Paediatrics</a></li>
+<li><a href="https://www.apolloclinic.com/for-patients/services/consultations/dermatology">Dermatology</a></li>
+<li><a href="https://www.apolloclinic.com/for-patients/services/consultations/ent">ENT</a></li>
+</ul>
+</div>
+<div class="col-lg-2 col-md-4 col-xs-12 col-sm-6">
+<h3>Diagnostics</h3>
+<ul>
+<li><a href="https://www.apolloclinic.com/for-patients/services/diagnostics/laboratory-condition">Laboratory</a></li>
+<li><a href="https://www.apolloclinic.com/for-patients/services/diagnostics/imaging-services/x--ray">X-Ray</a></li>
+<li><a href="https://www.apolloclinic.com/for-patients/services/diagnostics/ecg-test">ECG</a></li>
+<li><a href="https://www.apolloclinic.com/for-patients/services/diagnostics/tmt">TMT</a></li>
+<li><a href="https://www.apolloclinic.com/for-patients/services/diagnostics/genetic-screening-tests">Genetic Screening Tests</a></li>
+</ul>
+</div>
+<div class="col-lg-2 col-md-4 col-xs-12 col-sm-6 footer-col-3">
+<h3>Health Checks</h3>
+<ul>
+<li><a href="https://www.apolloclinic.com/health-check-packages/">Health Checkup Packages</a></li>
+<li><a href="https://www.apolloclinic.com/for-patients/services/health-checks/apollo-health-check">Apollo Health Check</a></li>
+<li><a href="https://www.apolloclinic.com/for-patients/services/health-checks/apollo-heart-check-up">Apollo Heart Check</a></li>
+<li><a href="https://www.apolloclinic.com/for-patients/services/health-checks/apollo-whole-body-check">Apollo Whole Body Check</a></li>
+<li><a href="https://www.apolloclinic.com/for-patients/services/health-checks/apollo-master-health-check">Apollo Master Health Check</a></li>
+<li><a href="https://www.apolloclinic.com/for-patients/services/health-checks/apollo-executive-health-check">Apollo Executive Health Check</a></li>
+</ul>
+</div>
+<div class="col-lg-2 col-md-4 col-xs-12 col-sm-6">
+<h3>Speciality Clinics</h3>
+<ul>
+<li><a href="https://www.apolloclinic.com/for-patients/services/specialty-clinics/diabetes">Diabetes</a></li>
+<li><a href="https://www.apolloclinic.com/for-patients/services/specialty-clinics/allergy-and-asthma">Allergy & Asthma</a></li>
+<li><a href="https://www.apolloclinic.com/for-patients/services/specialty-clinics/menstrual">Menstrual Health</a></li>
+<li><a href="https://www.apolloclinic.com/for-patients/services/specialty-clinics/arthritis-clinic">Arthritis</a></li>
+<li><a href="https://www.apolloclinic.com/for-patients/services/specialty-clinics/blood-pressure">Blood Pressure</a></li>
+</ul>
+</div>
+<div class="col-lg-2 col-md-4 col-xs-12 col-sm-6">
+<h3>About Us</h3>
+<ul>
+<li><a href="https://www.apolloclinic.com/about-apollo-clinic">About Apollo Clinic</a></li>
+<li><a href="https://www.apolloclinic.com/about-ahll">About AHLL</a></li>
+<li><a href="https://www.apolloclinic.com/about-apollo-group">About Apollo Group</a></li>
+<li><a href="https://www.apolloclinic.com/our-chairmans-profile">Our Chairman's Profile</a></li>
+<li><a href="https://www.apolloclinic.com/our-management-team">Our Management Team</a></li>
+</ul>
+</div>
+<div class="col-lg-2 col-md-4 col-xs-12 col-sm-6">
+<h3>Contact Us</h3>
+<ul>
+<li><a href="https://www.apolloclinic.com/contact-us">Contact</a></li>
+<li><a href="https://www.apolloclinic.com/careers">Careers</a></li>
+<li><a href="http://nps.apolloclinic.com:8080/">Feedback</a></li>
+<li><a href="https://www.apollohl.com/advertise-with-us/">Advertise With Us</a></li>
+<li><a href="https://apokosrehab.com">ApoKOS Rehab</a></li>
+<li><a href="https://www.apolloclinic.com/safety-quiz">Safety Quiz</a></li>
+<li><a href="https://www.apolloclinic.com/privacy-policy">Privacy Policy</a></li>
+<li><a href="https://apollodental.in" target="_blank">Apollo Dental</a></li>
+</ul>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<!-- <div class="footer-botom-container full_width">
+<div class="container footer-container">
+<div class="col-lg-7 col-md-7 col-sm-6 col-xs-12">
+<h3>Newsletter Sign-up</h3>
+<p>Share you email ID we will share Healthy Tips- Sharing is
+Caring. We promise that we will not share your email address.</p>
+</div>
+<div class="col-lg-5 col-md-5 col-sm-6 col-xs-12">
+<form onsubmit="return submitSubscribe()" action="post">
+<input type="text" id="newsletter_email" name="newsletter_email" placeholder="Email Address" class="sb-search-input"> <span class="sb-icon-search" id="subscribe_load" style="display: none">Loading...</span>
+<button class="sb-icon-search" type="submit" id="subscribe_btn">Subscribe</button>
+</form>
+<span id class="subscriber_msg"></span>
+</div>
+<div class="col-md-3" style="margin-top: 10px; float: right; margin-right: 20px;">
+<ul class="social-network social-circle">
+<li><a href="https://www.facebook.com/ApolloClinicIndia/" target="_blank" class="icoFacebook" title="Facebook" rel="nofollow"><i class="fa fa-facebook"></i></a></li>
+<li><a href="https://www.instagram.com/apolloclinics/" class="icoInstagram" title="instagram" rel="nofollow"><i class="fa fa-instagram"></i></a></li>
+<li><a href="https://twitter.com/ApolloClinics" target="_blank" class="icoTwitter" title="Twitter" rel="nofollow"><i class="fa fa-twitter"></i></a></li>
+<li><a href="https://www.linkedin.com/company/apollo-clinic/" class="icoLinkedin" title="Linkedin" rel="nofollow"><i class="fa fa-linkedin"></i></a></li>
+<li><a href="https://www.youtube.com/@ApolloClinics?sub_confirmation=1" class="icoYouTube" title="Youtube" rel="nofollow"><i class="fa fa-youtube"></i></a></li>
+</ul>
+</div>
+</div>
+</div> -->
+<div class="footer-copyrights full_width">
+<div class="container footer-container">
+<p style="text-align: center;">Copyright &copy; 2023, Orbit Square Limited, All Rights Reserved.</p>
+</div>
+</div>
+</div>
+
+<div class="modal fade" id="request_model" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+<span aria-hidden="true">&times;</span>
+</button>
+<h4 class="modal-title" id="myModalLabel">Request call</h4>
+<span class="ajax-loading hide">Loading...</span>
+</div>
+<form onSubmit="return false" novalidate action="https://www.apolloclinic.com/form/requestCall" method="post" enctype="multipart/form-data" name="requestcall" id="trequestcall" role="form">
+<div class="request_from show">
+<div class="modal-body">
+<div class="row">
+<div class="col-lg-12">
+<div class="form-group">
+<label for="fullname">Full name <strong style="color: #F00">*</strong></label>
+<input type="text" class="form-control" id="rfullname" name="rfullname" placeholder="Full name" required />
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-lg-12">
+<div class="form-group">
+<label for="mobile">Mobile <strong style="color: #F00">*</strong></label>
+<input type="text" class="form-control" id="rmobile" name="rmobile" placeholder="Mobile" required />
+</div>
+</div>
+</div>
+</div>
+<div class="modal-footer trequestcallload">
+<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+<button type="submit" class="btn btn-primary">Submit</button>
+</div>
+<div class="modal-footer trequestcallloading" style="display: none">Submitting the form Please wait...</div>
+</div>
+<div class="sucess_msg hide"></div>
+<div class="error_msg hide"></div>
+</form>
+</div>
+</div>
+</div>
+
+<div class="modal fade" id="c2Call" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal-dialog" role="document" style="width:250px;">
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+<span aria-hidden="true">&times;</span>
+</button>
+<h4 class="modal-title" id="myModalLabel">Request A call</h4>
+<span class="ajax-loading hide">Loading...</span>
+</div>
+<form class="form4" id="form4" style="text-align:center;">
+<input type="phone" id="phone" name="user_phone" placeholder="Mobile Number" class="user_phone inpt" style="margin:5px;">
+<br/>
+<button type="submit" class="btn btn-primary" style="float:none;margin:5px;">Generate OTP</button>
+</form>
+<div style="text-align:center;">
+<form class="form2" id="form2" style="display:none;text-align:center;">
+<input type="number" id="otp" name="user_otp" placeholder="Enter OTP" style="text-align:center;margin:5px;">
+<input type="hidden" name="user_phone_otp" class="user_phone_otp">
+<button type="submit" class="btn btn-primary" style="margin:5px;float:none;">Verify OTP</button>
+</form>
+</div>
+</div>
+</div>
+</div>
+<div class="spinloaders" style="display:none">
+<div>Calling...</div><br/>
+<div class="spinner-grow text-primary" role="status">
+<span class="sr-only">Loading...</span>
+</div>
+<div class="spinner-grow text-secondary" role="status">
+<span class="sr-only">Loading...</span>
+</div>
+<div class="spinner-grow text-success" role="status">
+<span class="sr-only">Loading...</span>
+</div>
+<div class="spinner-grow text-danger" role="status">
+<span class="sr-only">Loading...</span>
+</div>
+<div class="spinner-grow text-warning" role="status">
+<span class="sr-only">Loading...</span>
+</div>
+<div class="spinner-grow text-info" role="status">
+<span class="sr-only">Loading...</span>
+</div>
+<div class="spinner-grow text-light" role="status">
+<span class="sr-only">Loading...</span>
+</div>
+<div class="spinner-grow text-dark" role="status">
+<span class="sr-only">Loading...</span>
+</div>
+</div>
+
+<div class="modal fade" id="book_model" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+<span aria-hidden="true">&times;</span>
+</button>
+<h4 class="modal-title" id="myModalLabel">Book an Appointment</h4>
+<span class="ajax-loading hide">Loading...</span>
+</div>
+
+<form id="quick_appointment_widget" class="quick_appointment_widget quick_appointment_widget_form">
+<div class="appointment_response"></div>
+<div class="row">
+<div class="col-md-6 col-sm-6 col-xs-6">
+<div class="form-group">
+<input type="text" name="fname" id class="form-control" placeholder="First Name">
+</div>
+</div>
+<div class="col-md-6 col-sm-6 col-xs-6">
+<div class="form-group">
+<input type="text" name="lname" id class="form-control" placeholder="Last Name">
+</div>
+</div>
+<div class="col-md-6 col-sm-6 col-xs-6">
+<div class="form-group">
+<input type="email" name="email" id class="form-control" placeholder="Email">
+</div>
+</div>
+<div class="col-md-6 col-sm-6 col-xs-6">
+<div class="form-group">
+<input type="tel" name="phone" id class="form-control" placeholder="Phone No.">
+</div>
+</div>
+<div class="col-md-6 col-sm-6 col-xs-6">
+<div class="form-group">
+<input type="text" name="dob" id class="form-control dob_field" placeholder="Date of Birth">
+</div>
+</div>
+<div class="col-md-6 col-sm-6 col-xs-6">
+<div class="form-group">
+<select name="gender" class="form-control" id="field_gender">
+<option value>Select Gender</option>
+<option value="1">Male</option>
+<option value="2">Female</option>
+</select>
+</div>
+</div>
+<div class="col-md-6 col-sm-6 col-xs-6">
+<div class="form-group">
+<select name="cityId" class="form-control field_city" data-form-class=".quick_appointment_widget_form">
+<option value="0">Select City</option>
+</select>
+</div>
+</div>
+<div class="col-md-6 col-sm-6 col-xs-6">
+<div class="form-group">
+<span id="field_clinics-loader" class="field-loader field_clinics-loader"><i class="fa fa-spinner fa-spin"></i></span>
+<select name="hospitalId" class="form-control field_clinics" data-form-class=".quick_appointment_widget_form">
+<option value="0">Select Clinic</option>
+</select>
+</div>
+</div>
+<div class="col-md-6 col-sm-6 col-xs-6">
+<div class="form-group">
+<span id="field_speciality-loader" class="field-loader field_speciality-loader"><i class="fa fa-spinner fa-spin"></i></span>
+<select name="specialityId" class="form-control field_speciality" data-form-class=".quick_appointment_widget_form">
+<option value="0">Select Speciality</option>
+</select>
+</div>
+</div>
+<div class="col-md-6 col-sm-6 col-xs-6">
+<div class="form-group">
+<span id="field_doctor-loader" class="field-loader field_doctor-loader"><i class="fa fa-spinner fa-spin"></i></span>
+<select name="doctorId" class="form-control field_doctor" data-form-class=".quick_appointment_widget_form">
+<option value="0">Select Doctor</option>
+</select>
+</div>
+</div>
+<div class="col-md-6 col-sm-6 col-xs-6">
+<div class="form-group dates-wrap">
+<span class="field-loader appointmentpicker-loader"><i class="fa fa-spinner fa-spin"></i></span>
+<input type="text" name="date" class="form-control appointmentpicker fa fa-arrow-right" placeholder="Select Date" readonly="readonly" data-form-class=".quick_appointment_widget_form">
+<span class="dates-preloader" style="display: none;">Loading Available Dates...</span>
+</div>
+</div>
+<div class="col-md-6 col-sm-6 col-xs-6 slots-container">
+<div class="form-group" class="slots-container">
+<span class="field-loader field_slot-loader"><i class="fa fa-spinner fa-spin"></i></span>
+<select name="slotTime" class="form-control field_slot" data-form-class=".quick_appointment_widget_form">
+<option value="0">Select Slot</option>
+</select>
+<span class="slots-preloader" style="display: none;">Loading Available Slots...</span>
+<input type="hidden" name="slotId" class="field_slot_id" value data-form-class=".quick_appointment_widget_form">
+</div>
+</div>
+<div class="col-md-6">
+<div class="form-group">
+<select name="mode" class="form-control" id="field_appointment_mode">
+<option value>Select Mode</option>
+<option value="Physical Consult">Physical Consult</option>
+<option value="Tele Consult">Tele Consult</option>
+</select>
+</div>
+</div>
+<div class="col-md-12 consent-checkbox">
+<input type="checkbox" name="concern" value="true" id="concern"><label for="true"> I Agree "<a type="button" data-toggle="modal" class="btn-modal-consent" data-target="#concernModal" rel="nofollow" href="#">Patient Information Consent</a>"</label>
+</div>
+<div class="col-md-12 col-sm-12 col-xs-12">
+<input type="hidden" name="cityName" class="cityName" id="cityName" value>
+<input type="hidden" name="specialityName" class="specialityName" id value>
+<input type="hidden" name="doctorName" class="doctorName" id value>
+<input type="hidden" name="hospitalName" class="hospitalName" id value>
+<input type="hidden" name="appointment_type" class="appointment_type appointment_type_input" value>
+<input type="hidden" name="action" value="ConfirmConsultationAppointment">
+<button class="btn btn-primary btn-confirm-appointment" data-form-class=".quick_appointment_widget_form">Submit</button>
+<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+</div>
+</div>
+</form>
+
+<form onSubmit="return false" novalidate action="#" method="post" enctype="multipart/form-data" name="bookappnew" id="bookapp" role="form" style="display:none;">
+<div class="app_form show">
+<div class="modal-body" style="padding: 15px 15px 0px 15px;">
+<div class="row">
+<div class="col-lg-6">
+<div class="form-group">
+<input type="text" class="form-control" id="fullname" name="fullname" placeholder="Full Name *" required />
+</div>
+</div>
+<div class="col-lg-6">
+<div class="form-group">
+<input type="text" class="form-control" name="phonenumber" id="phonenumber" placeholder="Mobile *" required />
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-lg-6">
+<div class="form-group">
+<input type="email" class="form-control" name="email" id="email" placeholder="Email Address *" required />
+</div>
+</div>
+<div class="col-lg-6">
+<div class="form-group countryselecting">
+<select id="hcountry" class="select2 appAddresscountry hspeccountry" name="country" onchange="countryChange(this.value)" style="width: 100%" required>
+<option value>Select Country</option>
+<option value="India">India</option>
+<option value="Qatar">Qatar</option>
+</select>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-lg-6">
+<div class="form-group selecting">
+<select id="address" class="select2 appAddress appAddressdyn" onchange="areaChange(this.value)" name="address" style="width: 100%" required>
+<option value>Please Select City</option>
+</select>
+</div>
+</div>
+<div class="col-lg-6">
+<div class="form-group selecting">
+<select id="harea" class="select2 appAddress harea" name="area" onchange="specialityChange(this.value)" style="width: 100%" required>
+<option value>Select Clinic Location</option>
+</select>
+</div>
+</div>
+</div>
+<div class="row hdselectforser">
+<div class="col-lg-12">
+<div class="form-group selecting">
+<select id="hspecmainserv" class="select2  clshspecmainserv" name="homeservice" style="width: 100%" required>
+<option value>Select Service</option>
+<option value="Consultations">Consultations</option>
+<option value="Diagnostics">Diagnostics</option>
+<option value="Health_checks">Health checks</option>
+<option value="Dental">Dental</option>
+<option value="Physiotherapy">Physiotherapy</option>
+
+<option value="Vaccinations">Vaccinations</option>
+
+</select>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-lg-6">
+<div class="form-group">
+<input type="text" class="form-control alldatepicker" id="appoinment2" name="appoinment" placeholder="Appointment" required onchange="dateChangenew(this.value)" />
+</div>
+</div>
+<div class="col-lg-6">
+<div class="form-group selecting">
+<select id="clinictime" class="select2 appAddress clinictime" name="clinicTime" style="width: 100%" required>
+<option value>Select Time Slot</option>
+<option value="Morning (8 AM to 12 PM)">Morning (8 AM to 12 PM)</option>
+<option value="Afternoon (1 PM to 4 PM)">Afternoon (1 PM to 4 PM)</option>
+<option value="Evening (5 PM to 9 PM)">Evening (5 PM to 9 PM)</option>
+</select>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-lg-12">
+<div class="form-group">
+<textarea type="text" class="form-control" id="message" name="message" placeholder="Message" required /></textarea>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-lg-12">
+<div class="form-group">
+<span style="color: #ff0000;">Note:</span> The confirmation of appointment will be confirmed by our backend team and it is subject to availability of doctors or time slot.
+</div>
+</div>
+</div>
+</div>
+<div class="modal-footer appointload">
+<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+<button type="submit" class="btn btn-primary newsbtnew">Submit</button>
+</div>
+<div class="modal-footer appointloading" style="display: none">
+Submitting the form Please wait...</div>
+</div>
+<div class="sucess_msg_bp hide"></div>
+<div class="error_msg_bp hide"></div>
+</form>
+</div>
+</div>
+</div>
+<div class="modal fade" id="socialmediapp" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+<form onSubmit="return false" novalidate action="#" method="post" enctype="multipart/form-data" name="bookapp" id="bookapp3" role="form">
+<div class="app_form show">
+<div class="modal-footer appointloading" style="display: none">
+Submitting the form Please wait...</div>
+</div>
+<div class="sucess_msg_bp hide"></div>
+<div class="error_msg_bp hide"></div>
+</form>
+</div>
+</div>
+</div>
+<div class="modal fade" id="reqcallapp" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+<div class="modal-header" style="padding: 5px 10px;">
+<button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+<h4 class="modal-title" id="myModalLabel">Call</h4>
+</div>
+<div class="modal-body" style="padding: 15px 15px 10px 15px;">
+<div class="row">
+<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 top-menu-find-clinic">
+
+</div>
+<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 top-menu-find-clinic">
+<ul style="margin-left: -20px;">
+<span><a class="reqcall" href="#"><i class="request_call"></i>Request
+a Call</a></span>
+</u>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<style>
+ .consent-checkbox{
+    text-align:left;
+}
+    .consent-checkbox input{
+        height:auto;
+        margin-right:8px;
+    }
+</style>
+
+<div class="modal fade" id="collection_model" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+<span aria-hidden="true">&times;</span>
+</button>
+<h4 class="modal-title" id="myModalLabel">Home Sample Collection</h4>
+</div>
+<form action="https://www.apolloclinic.com/crm/crm-integ.php" method="post" enctype="multipart/form-data" name="samplecollection">
+<input type="hidden" class="form-control" name="utm_source" value="SEO" />
+<input type="hidden" class="form-control" name="utm_campaign" value="Home Sample Collection" />
+<div class="sample_collection show">
+<div class="modal-body">
+<div class="row">
+<div class="col-lg-12">
+<div class="form-group">
+<label for="fullname">Full Name <strong style="color: #F00">*</strong></label>
+<input type="text" class="form-control" id="cfullname" name="cfullname" placeholder="Full name" required />
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-lg-12">
+<div class="form-group">
+<label for="cemail">Email <strong style="color: #F00">*</strong></label>
+<input type="email" class="form-control" id="cemail" name="cemail" placeholder="Email Address" required />
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-lg-12">
+<div class="form-group">
+<label for="cmobile">Mobile <strong style="color: #F00">*</strong></label>
+<input type="text" class="form-control" id="cmobile" name="cmobile" placeholder="Mobile" required />
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-lg-12">
+<div class="form-group">
+<label for="cmobile">Enter Test Name <strong style="color: #F00">*</strong></label> <input type="text" class="form-control" id="ctests" name="ctests" placeholder="Tests" required />
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-lg-12">
+<div class="form-group">
+<label for="address">Enter City Name <strong style="color: #F00">*</strong></label>
+<input type="text" class="form-control" id="caddress" name="caddress" placeholder="City" required>
+</div>
+</div>
+</div>
+</div>
+<div class="modal-footer samplefrmload">
+
+<input type="submit" class="btn btn-primary" value="Submit">
+</div>
+<div class="modal-footer samplefrmloading" style="display: none">
+Submitting the form Please wait...</div>
+</div>
+<div class="sucess_msg hide"></div>
+<div class="error_msg hide"></div>
+</form>
+</div>
+</div>
+</div>
+
+
+<div id="concernModal" class="modal fade" role="dialog">
+<div class="modal-dialog">
+
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal">&times;</button>
+<h4 class="modal-title">Patient Information Consent Form</h4>
+</div>
+<div class="modal-body">
+
+<h3>Patient Information Consent Form</h3>
+<ol type="1">
+<li><b>Data Collection by AHLL:</b> Apollo Clinics, a unit of Apollo Health & Lifestyle Limited (“AHLL”) shall collect and process the following information from me:
+<ol type="a">
+<li>Contact information: Name, Address, Contact details, Email ID, Phone Number;</li>
+<li>Demographic information: Gender, Age, Date of Birth, Marital Status, Nationality;</li>
+<li>Other information that I provide to AHLL or is generated while availing services or interacting with AHLL employees, doctors, technicians, consultants, etc.;</li>
+<li>Health information such as my medical records and history provided by me or generated by AHLL in the course of my availing of any services from AHLL;</li>
+<li>Information about my insurance coverage provided by me or generated on availing any services from AHLL; </li>
+<li>Information regarding my physical, physiological and mental health provided by me or generated on availing any services from AHLL, etc.;</li>
+<li>Financial information (payment/billing information) that I provide for availing services from AHLL; and</li>
+<li>Any other information relating to the above which I may have shared with AHLL prior to the date of this consent form for availing any services.</li>
+</ol>
+</li>
+<li>
+<b>Purpose of Collection:</b> I understand that AHLL may use the information mentioned above to provide me with services, or use it for other purposes, some of which are below:
+<ol type="a">
+<li>Registration to receive services, maintenance of my unified health profile/records, identification, communication, information on new services and offers, taking feedback, help and complaint resolution, other customer care related activities or issues relating to the use of my services; </li>
+<li>Creation and maintenance of electronic health records for use by AHLL, Apollo group companies and affiliates, to provide relevant services;</li>
+<li>Receiving personalized announcements/offers of various Apollo group companies;</li>
+<li>Customising suggestions for appropriate medical products and services offered by AHLL and affiliates; </li>
+<li>Research for the development and improvement of our products and services including our diagnostics and treatment protocols;</li>
+<li>Disclosure as required to government authorities in compliance with applicable law;</li>
+<li>Investigating, and resolving any disputes or grievances; and</li>
+<li>Any purpose(s) required by applicable law. </li>
+</ol>
+</li>
+</ol>
+<h4>Disclosure and Transfer of Personal Information</h4>
+<ol type="1" start="3">
+<li>For the abovementioned purposes, and to the extent permitted by applicable law, AHLL may share, disclose and in some cases transfer all or any information referred to above, to such entities as required to provide services to me, or for compliance with applicable laws. I understand that these entities include but are not restricted to Apollo group companies, affiliate companies, AHLL doctors, hospitals, diagnostic centres, chemists, third party service providers to AHLL, and law enforcement agencies. For these purposes, I consent to AHLL transferring my personal information to entities that may be located outside India.</li>
+<li>I understand that in the event of a merger, reorganization, acquisition, joint venture, assignment, spin-off, transfer, asset sale, or sale or disposition of all or any portion of the AHLL business, including in connection with any bankruptcy or similar proceedings, AHLL may transfer any and all personal information to the relevant third party with the same rights of access and use. </li>
+</ol>
+<h4>Retention of Personal Information</h4>
+<ol type="1" start="5">
+<li>AHLL will keep any information collected from me for as long as necessary to provide me with services or as may be required under any law. </li>
+<li>AHLL may retain information related to me if needed to prevent fraud or abuse or for other legitimate purposes. AHLL may store my personal information in de-identified form for the purposes indicated in Section 2 above.</li>
+</ol>
+<h4>My Rights</h4>
+<ol type="1" start="7">
+<li>I understand that I have the right to access my personal information, and request updation, correction and deletion of such information, but not information processed in de-identified form, or any information which is retained by AHLL to comply with applicable law.</li>
+<li>I understand that I am free to not share any health, financial or other information that I deem confidential. I understand that I may withdraw consent for AHLL to use data that I have already provided to it. I understand that if I exercise these rights, AHLL can limit or deny the provision of services for which it considers such information necessary.</li>
+<li>I understand that I may contact <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a5c6d6e5c4d5cac9c9cacdc98bc6cac8">[email&#160;protected]</a> for any questions or for exercise of these rights and for any other grievances related to my personal information. </li>
+</ol>
+<p>I hereby give my consent to AHLL to collect, use, store, share, and / or otherwise process my personal information in accordance with this consent form.</p>
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+</div>
+</div>
+</div>
+</div>
+
+<div id="lastvisitpage" class="modal fade" role="dialog">
+<div class="modal-dialog">
+
+<div class="modal-content">
+<div class="modal-header popup-header">
+
+</div>
+<div class="modal-body">
+<button type="button" id="visipageclose" class="close close-button" data-dismiss="modal">&times;</button>
+<p>You visited Apollo Clinic <span id="dynservcid"></span> services. If you want to book an appointment for consulation.<br/>
+<button type="button" class="btn btn-default btn-lg button-pop" id="lastvisitpagebtn"></button>
+<button type="button" class="btn btn-default btn-lg button-pop" id="reqappointmentlastvisitpagebtn" onclick="showppforreq()">Reauest an Appointment</button>
+</p>
+</div>
+<div class="modal-footer popup-footer">
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+<div id="googlearea"></div>
+<div id="googleareastate"></div>
+<div id="googleareacountry"></div>
+<div id="googleareaformatedadrs"></div>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 877214939;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+</script>
+<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+</script>
+<noscript>
+		<div style="display: inline;">
+			<img height="1" width="1" style="border-style: none;" alt=""
+				src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/877214939/?guid=ON&amp;script=0" />
+		</div>
+	</noscript>
+
+<!-- <script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/5dfb185343be710e1d22c02f/default';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script> -->
+
+<div class="mobileShow">
+<a href="#" data-toggle="modal" data-target="#book_model"><i class="fa fa-calendar"></i> Book an Appointment</a>
+</div>
+</body>
+
+
+<script>
+
+$('#visipageclose').on('click',function(){
+
+	//setCookie("visitpagename", "", 365);
+	//setCookie("visitpage", "", 365);
+});
+$('#lastvisitpagebtn').on('click',function(){
+	var ridurl = $(this).attr('vispageurl');
+	//setCookie("visitpagename", "", 365);
+	//setCookie("visitpage", "", 365);
+	window.location.replace(ridurl);
+});
+
+$('.reqskip').on('click',function(){
+
+	$('#socialmediapp').modal('hide');
+	$('#book_model').modal('show');
+
+			});
+
+$(document).on('hidden.bs.modal', '.modal', function () {
+    $('.modal:visible').length && $(document.body).addClass('modal-open');
+});
+
+
+$('.reqcall').on('click',function(){
+
+	$('#reqcallapp').modal('hide');
+	$('#request_model').modal('show');
+
+			});
+$(function(){
+
+var appendthis =  ("<div class='modal-overlay js-modal-close'></div>");
+
+	$('a[data-modal-id]').click(function(e) {
+		e.preventDefault();
+    $("body").append(appendthis);
+    $(".modal-overlay").fadeTo(500, 0.7);
+    //$(".js-modalbox").fadeIn(500);
+		var modalBox = $(this).attr('data-modal-id');
+		$('#'+modalBox).fadeIn($(this).data());
+	});
+
+
+$(".js-modal-close, .modal-overlay").click(function() {
+    $(".modal-box, .modal-overlay").fadeOut(500, function() {
+        $(".modal-overlay").remove();
+    });
+
+});
+
+$(window).resize(function() {
+    $(".modal-box").css({
+        top: ($(window).height() - $(".modal-box").outerHeight()) / 2,
+        left: ($(window).width() - $(".modal-box").outerWidth()) / 2
+    });
+});
+
+$(window).resize();
+
+});
+</script>
+<script>
+(function($){open_popup(); })(jQuery);
+
+ var states = "";
+ $(function() {
+ states = {"area":{"Hyderabad":["A S Rao Nagar","Aparna Cyber Commune  Society Clinic","Aparna Kanopy Tulip Society Clinic","Aparna Lake Breeze Society Clinic","Aparna Sarovar Nallagandla Society Clinic","Boduppal","Chanda Nagar","Emerald Park Society Clinic","G K Pride Society Clinic","Giridhari Executive Park Society Clinic","Indu Aranya Society Clinic","Jal Vayu Towers Society Clinic","Kondapur","Kukatpally Housing Board Colony","Manikonda","Meenakshi Sky Lounge Society Clinic","My Home Jewel Society Clinic","Nizampet ","Power Welfare Society Clinic","Rainbow Vistas Rock Garden Society Clinic","Sanskruti Township Society Clinic","Sri Sairam Towers Society Clinic","Vertex Sadguru Society Clinic"],"Indore":["A.B. Road "],"Kolkata":["Amtala","Ballygunge Phari","Barasat","Barrackpore","Baruipur","Behala","Beliaghata","Birati","Chinarpark","Dunlop","Garia","Ghola","Howrah","Jessore Road","Madhyamgram","Mukundapur","Narendrapur","Newtown","PA Shah Road","Park Circus","Salt Lake","Sarat Bose Road","Shakuntala Park","Sodepur","Thakurpukur","Vivekananda Road"],"Mumbai":["Andheri East","Colaba"],"Chennai":["Anna Nagar East","Apollo Society Clinic Purva Windermere","Dlf Garden Society Clinic","Madipakkam","Olympia Opaline  Society Clinic","Porur","T Nagar","Tambaram","Valasaravakkam","Velachery","Yuga Kalpataru Society Clinic"],"Bengaluru":["Apollo Society Clinic Shoba Hillview Apartment Owners Association","Basavanagudi","Bellandur","Doddakannelli","Electronic city","Hosa Road","HSR Layout","Indiranagar","JP nagar","Koramangala","Kundalahalli","Mahadevapura","RT Nagar","Sarjapur Road","Shriram Sameeksha\u00a0 Society Clinic","Sobha Dream Acres Society Clinic"],"Guwahati":["Athgaon","Dispur","Guwahati","Kamrup Metro","Zoo Road"],"Pune":["Aundh","Ba Vermont Society Clinic","Bramha Sky City Society Clinic","Kharadi","Nigdi(Pimpri)","Viman Nagar","Wanowrie"],"Murshidabad":["Baharampur"],"Balasore":["Balasore"],"Gorakhpur":["Basharatpur","Betiahata"],"Berhampur":["Berhampur"],"Dehradun":["Dehradun"],"Dibrugarh":["Dibrugarh"],"Muntaza Street":["Doha"],"Durgapur":["Durgapur"],"Vishakapatnam":["Dwaraka Nagar"],"New Delhi":["East of Kailash","Gujranwala Town","Rajouri Garden"],"Coimbatore":["Ganapathypudur"],"Guntur":["Guntur"],"Gurugram":["Gurgaon (Sohna Roa)","Gurugram (Golf Course Road) "],"Warangal":["Hanamkonda"],"Lucknow":["Hazratganj"],"Bhadrakali":["Hooghly"],"Jabalpur":["Jabalpur"],"Jharsuguda":["Jharsuguda"],"Navi Mumbai":["Kalamboli","Vashi"],"Kannur":["Kannur"],"Karama":["Karama"],"Chandigarh":["Madhya Marg"],"Malda":["Malda"],"Kharar":["Mohali"],"Moranhat":["Moranhat"],"Nagpur":["Nagpur"],"Nashik":["Nashik"],"Payyannur":["Payyannur"],"Port Blair":["Port Blair"],"Ramrajatala":["Ramrajatala"],"Ranchi":["Ranchi"],"Rewari":["Rewari"],"Rourkela":["Rourkela"],"Panchkula":["Sector 14"],"Siliguri":["Sevoke Road"],"Raipur":["Shankar Nagar"],"Silchar":["Silchar"],"Surat":["Surat"],"Medinipur":["Tamluk"],"Tinsukia":["Tinsukia"],"Tirupati":["Tirupati"],"Vadodara":["Vadodara"],"Agra":["Vijay Nagar Colony"],"Mysore":["VV Mohalla"]},"city":{"Hyderabad":"Hyderabad","Indore":"Indore","Kolkata":"Kolkata","Mumbai":"Mumbai","Chennai":"Chennai","Bengaluru":"Bengaluru","Guwahati":"Guwahati","Pune":"Pune","Murshidabad":"Murshidabad","Balasore":"Balasore","Gorakhpur":"Gorakhpur","Berhampur":"Berhampur","Dehradun":"Dehradun","Dibrugarh":"Dibrugarh","Muntaza Street":"Muntaza Street","Durgapur":"Durgapur","Vishakapatnam":"Vishakapatnam","New Delhi":"New Delhi","Coimbatore":"Coimbatore","Guntur":"Guntur","Gurugram":"Gurugram","Warangal":"Warangal","Lucknow":"Lucknow","Bhadrakali":"Bhadrakali","Jabalpur":"Jabalpur","Jharsuguda":"Jharsuguda","Navi Mumbai":"Navi Mumbai","Kannur":"Kannur","Karama":"Karama","Chandigarh":"Chandigarh","Malda":"Malda","Kharar":"Kharar","Moranhat":"Moranhat","Nagpur":"Nagpur","Nashik":"Nashik","Payyannur":"Payyannur","Port Blair":"Port Blair","Ramrajatala":"Ramrajatala","Ranchi":"Ranchi","Rewari":"Rewari","Rourkela":"Rourkela","Panchkula":"Panchkula","Siliguri":"Siliguri","Raipur":"Raipur","Silchar":"Silchar","Surat":"Surat","Medinipur":"Medinipur","Tinsukia":"Tinsukia","Tirupati":"Tirupati","Vadodara":"Vadodara","Agra":"Agra","Mysore":"Mysore"}} });
+
+function areaChangeold(val){
+	//var val = $("#address").val();
+	var str = '<option value="">Select Clinic Location</option>';
+	$.each(states['area'][val], function (i,j){
+		str += "<option value='"+j+"'>"+j+"</option>";
+	});
+	$(".harea").html(str);
+}
+
+function areaChange(newcityval){
+	//console.log(newcityval);
+
+	$.ajax({
+        url: 'https://www.apolloclinic.com/clinics/getclinicloc',
+        type: 'post',
+        dataType : 'json',
+		data:{newcityval:newcityval},
+		success : function(data){
+			console.log(data);
+			var str = '<option value="">Select Clinic Location</option>';
+			$.each(data, function (i,j){
+				str += "<option value='"+j+"'>"+j+"</option>";
+			});
+			$(".harea").html(str);
+      },
+        });
+}
+
+function specialityChange(newareainfo){
+	console.log(newareainfo);
+
+	$.ajax({
+        url: 'https://www.apolloclinic.com/clinics/getsepcialtiyinfo',
+        type: 'post',
+        dataType : 'json',
+		data:{newareainfo:newareainfo},
+		success : function(data){
+
+
+			var str = '<option value="">Select Speciality</option>';
+			$.each(data.specinfo, function (i,j){
+				str += "<option value='"+j+"'>"+j+"</option>";
+			});
+			$(".hspec").html(str);
+
+			var tmstr = '<option value="">Select Time Slot</option>';
+			$.each(data.slotinfo, function (i,j){
+				tmstr += "<option value='"+j+"'>"+j+"</option>";
+			});
+			//$(".clinictime").html(tmstr);
+      },
+        });
+}
+
+
+function dateChangenew(dateval)
+{
+	 var ntdate = $('#appoinment2').datepicker('getDate');
+
+
+	 var wekdaynew = $.datepicker.formatDate('DD', ntdate)
+	  //console.log(wekdaynew);
+	var newareainfo = $('#harea').val();
+
+	$.ajax({
+        url: 'https://www.apolloclinic.com/clinics/getTimeInfoBydate',
+        type: 'post',
+        dataType : 'json',
+		data:{newareainfo:newareainfo,wekdaynew:wekdaynew},
+		success : function(data){
+
+			var tmstr = '<option value="">Select Time Slot</option>';
+			$.each(data.slotinfo, function (i,j){
+				tmstr += "<option value='"+j+"'>"+j+"</option>";
+			});
+			//$(".clinictime").html(tmstr);
+      },
+        });
+}
+
+
+
+
+
+
+
+function areaChange2(val){
+	//var val = $("#address").val();
+	var str = '<option value="">Select Clinic Location</option>';
+
+	var locht = $('#googlearea').attr('areainfo');
+	if(locht != 'undefined')
+	{
+		$.each(states['area'][locht], function (i,j){
+			str += "<option value='"+j+"'>"+j+"</option>";
+		});
+		$("#address2").val(locht);
+
+
+		console.log(str);
+	}
+	//console.log($('#googlearea').attr('areainfo'));
+	$(".harea2").html(str);
+}
+
+
+	$(function() {
+		$("#address").trigger("change");
+		$("#address2").trigger("change");
+	});
+
+function open_popup(){
+    var cc = '1';
+    console.log(cc);
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth()+1;
+    var yyyy = today.getFullYear();
+
+    if(dd<10) {
+        dd='0'+dd
+    }
+
+    if(mm<10) {
+        mm='0'+mm
+    }
+
+    today = mm+'/'+dd+'/'+yyyy;
+    var to_date = '02/26/2017';
+
+    if(cc != 1 && today <= to_date){
+        $('.remove').removeClass('hide');
+    }
+}
+
+function skip_popup(){
+    $('.remove').removeClass('overlay_bg').addClass('hide');
+    $('.remove').removeClass('overlay_container').addClass('hide');
+}
+
+function dontshowmessage(){
+    var cc = '0';
+    skip_popup();
+}
+
+
+function openappnt()
+{
+
+
+	$(".hdselectforser").show();
+	$(".servicnewclsll").hide();
+	$('#gl-status').attr('stval',1);
+	var fnamenew =  $('#fullname').val();
+	var locnew = $('#googlearea').attr('areainfo');
+	var cnty = $('#googleareacountry').attr('areainfo');
+	var stly = $('#googleareastate').attr('areainfo');
+	$('#hcountry').val(cnty);
+	countryChange(cnty);
+
+	//var locnew = 'tirupathi';
+	if(locnew != ''){
+		console.log('loc'+locnew);
+	$('#address select').val(locnew);
+	var options = $('#address option');
+
+	var values = $.map(options ,function(option) {
+	    if(option.value == locnew)
+	    {
+	    	$('#address').prop('disabled', 'disabled');
+	    }
+	});
+	//$('#address').prop('disabled', 'disabled');
+	//console.log(locnew);
+	areaChange(locnew);
+	}
+
+	if(fnamenew == '')
+	{
+	$('#socialmediapp').modal('show');
+	}
+	else{
+
+
+		$('#book_model').modal('show');
+	}
+}
+
+function openreqcallapp()
+{
+	$('#reqcallapp').modal('show');
+}
+
+function countryChange(countryname)
+{
+	var locnewsel = $('#googlearea').attr('areainfo');
+	$.ajax({
+        url: 'https://www.apolloclinic.com/clinics/getcitiesnewlist',
+        type: 'post',
+        dataType : 'json',
+        data:{countryname:countryname},
+		success : function(data){
+
+			var str = '<option value="">Please Select City</option>';
+			var selstr = '';
+			$.each(data, function (i,j){
+				if(j == locnewsel)
+				{
+					selstr = 'selected';
+				}
+				else{
+					selstr = '';
+				}
+				str += "<option value='"+j+"' " +selstr+">"+j+"</option>";
+			});
+		    $(".appAddressdyn").html(str);
+      },
+        });
+}
+
+var alldata = {Consultations:['General Medicine','Gynaecology and Obstetrics','Paediatrics','Dermatology','ENT','Cardiology','Orthopaedics','Dentistry','Diabetology','Endocrinology','Gastroenterology','Nephrology','Nutrition and Dietetics','Ophthalmology','Psychiatry','Pulmonology','Urology'], Diagnostics:['Laboratory','Imaging Services-2D Echo','Imaging Services-Ultrasound','Imaging Services-X- Ray','Imaging Services-Mammography','Imaging Services-Sonomammography','Imaging Services-Dexa','ECG','TMT','Genetic Screening Tests','Lung Function Tests'], Health_checks:['Apollo Whole Body Check','Apollo Executive Health Check','Apollo  Master Health Check','Apollo Heart Check','Apollo Well Women Check','Apollo Personalized Health Check','Age Wise Women Healthcheck-For Teens','Age Wise Women Healthcheck-For women in 20s','Age Wise Women Healthcheck-For women in 30s','Age Wise Women Healthcheck-For women in 40s','Age Wise Women Healthcheck-For women in 50s','Quick Checks Whole Body','Quick Checks Executive','Quick Checks Master','Quick Checks Heart','Quick Checks Women','Quick Checks Child'], Dental:['Dental Braces','Root Canal Treatment','Dental Implants','Teeth scaling and cleaning','Teeth Whitening','Tooth extraction','Crowning'], Physiotherapy:['Back pain','Neck Pain','Knee Pain','Rehabilitation','Shoulder Pain','Carpal Tunnel Syndrome','Tennis Elbow','Repetitive Strain Injuries'], Specialty_Clinics:['Diabetes','Allergy & Asthma','Menstrual','Arthritis','Acidity','Blood Pressure','Back & Neck Pain','Breast','Ear Pain','Fertility','Hair Loss','Hearing','Menopause','Pediatrics','Prostate','Skin','Urinary Infection','Weight Management'], Treatment_Room:['Dressings / Plaster','Abscess / Boils drainage','Stitches','Nebulization','Copper T insertion','Injection Services'], Vaccinations:['Children-BCG','Children-Oral Polio Vaccine','Children-Hepatitis A & B','Children-DTP','Children-Haemophilus influenzae type b (Hib)','Children-Rotavirus','Children-Pneumonia','Children-Measles','Children-Mumps and Rubella','Children-Chicken Pox','Children-Typhoid','Children-Tetanus','Children-Influenza','Adult-Influenza','Adult-Chicken Pox','Adult-Cervical Cancer Prevention- Female','Adult-Pneumonia','Adult-Meningitis','Adult-Hepatitis A','Adult-Hepatitis B','Adult-Haemophilus influenzae type b (Hib)','Adult-Rabies','Adult-Typhoid','Adult-Tetanus'], Health_Home:['Home Sample Collection','Health @ Home Packages','Diabetic Screen Advanced','Diabetic Screen Basic','Healthy Body Packages','Senior Citizen Female','Senior Citizen Male','Whole Body Pack','Womens Pack']};
+
+
+$('.clshspecmainserv').on('change',function(){
+	 var locname = $(this).val();
+	  var n = locname.indexOf(" ");
+
+	  if(n != -1)
+	  {
+	  var locname = locname.substr(0, n);
+	  }
+	  //console.log(locname);
+	  var allitems = alldata[locname];
+	  var allopt = '<option value="">Select Sub Service</option>';
+	  if (!($.isEmptyObject(allitems)))
+	  {
+
+	  for(var k=0; k<allitems.length; k++)
+	  {
+		  allopt += '<option value="'+allitems[k]+'">'+allitems[k]+'</option>';
+	  }
+	  }
+	  $('.clshspecmainservsub').html(allopt);
+		  });
+
+
+function showppforreq()
+{
+
+	$("#lastvisitpage").modal('hide');
+	$(".hdselectforser").show();
+	$(".servicnewclsll").hide();
+	$('#gl-status').attr('stval',1);
+	var fnamenew =  $('#fullname').val();
+	var locnew = $('#googlearea').attr('areainfo');
+	var cnty = $('#googleareacountry').attr('areainfo');
+	var stly = $('#googleareastate').attr('areainfo');
+	$('#hcountry').val(cnty);
+	countryChange(cnty);
+
+	//var locnew = 'tirupathi';
+	if(locnew != ''){
+		console.log('loc'+locnew);
+	$('#address select').val(locnew);
+	var options = $('#address option');
+
+	var values = $.map(options ,function(option) {
+	    if(option.value == locnew)
+	    {
+	    	$('#address').prop('disabled', 'disabled');
+	    }
+	});
+	//$('#address').prop('disabled', 'disabled');
+	//console.log(locnew);
+	areaChange(locnew);
+	}
+
+	if(fnamenew == '')
+	{
+	$('#socialmediapp').modal('show');
+	}
+	else{
+
+
+		$('#book_model').modal('show');
+	}
+}
+
+</script>
+<script>
+          $(".downloadButton").on('click',function(){
+            var _url = "download.php";
+            var _data = $("#form1").serialize();
+            var _visitID = $("#visit_id").val();
+            var _pass = $("#passcode").val();
+            $("#passcode").val("");
+            $("#spanDownload").html("");
+            if(_visitID != "" && _pass != ""){
+              $(this).attr("disabled", true);
+              $("#spanDownload").html("<p><i class='fa fa-spinner fa-spin fa-2x fa-fw'></i>&nbsp;Downloading results. Please wait.</p>");
+              $.ajax({
+                    url: _url,
+                    type: 'post',
+                    dataType: 'json',
+                    data: _data,
+                    success: function (result) {
+                        $(".downloadButton").attr("disabled", false);
+                        if(result.status==0){
+                          $("#spanDownload").html("");
+                          var dURL = "CMS/" + result.visitid + ".pdf";
+                          var $a = $('<a />', {'href': dURL ,'download': result.visitid + '.pdf','text': "click"}).hide().appendTo("body")[0].click();
+                        }
+                        else{
+                          $("#spanDownload").html("<p><i class='fa fa-exclamation'></i>&nbsp;Invalid User Name/Password</p>");
+                        }
+                    }
+                });
+          }
+          else{
+            $("#spanDownload").html("<p><i class='fa fa-exclamation'></i>&nbsp;Please provide User Name and Password</p>");
+          }
+          });
+
+        </script>
+<script>
+          $(".downloadButton2").on('click',function(){
+            var _url = "download.php";
+            var _data = $("#formDownload").serialize();
+            var _visitID = $("#visit_id2").val();
+            var _pass = $("#passcode2").val();
+            $("#passcode2").val("");
+            $("#spanDownload2").html("");
+            if(_visitID != "" && _pass != ""){
+              $(this).attr("disabled", true);
+              $("#spanDownload2").html("<p><i class='fa fa-spinner fa-spin fa-2x fa-fw'></i>&nbsp;Downloading results. Please wait.</p>");
+              $.ajax({
+                    url: _url,
+                    type: 'post',
+                    dataType: 'json',
+                    data: _data,
+                    success: function (result) {
+                        $(".downloadButton2").attr("disabled", false);
+                        if(result.status==0){
+                          $("#spanDownload2").html("");
+                          var dURL = "CMS/" + result.visitid + ".pdf";
+                          var $a = $('<a />', {'href': dURL ,'download': result.visitid + '.pdf','text': "click"}).hide().appendTo("body")[0].click();
+                        }
+                        else{
+                          $("#spanDownload2").html("<p><i class='fa fa-exclamation'></i>&nbsp;Invalid User Name/Password</p>");
+                        }
+                    }
+                });
+          }
+          else{
+            $("#spanDownload2").html("<p><i class='fa fa-exclamation'></i>&nbsp;Please provide User Name and Password</p>");
+          }
+          });
+
+        </script>
+
+<script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1825232087797311');
+  fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1825232087797311&ev=PageView&noscript=1"
+/></noscript>
+
+
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window,document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '688029259303878'); 
+fbq('track', 'PageView');
+</script>
+<noscript>
+<img height="1" width="1" 
+src="https://www.facebook.com/tr?id=688029259303878&ev=PageView
+&noscript=1"/>
+</noscript>
+
+
+<script type="text/javascript">
+
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "bsmucb69ox");
+</script>
+
+<style>
+	
+#myBtn {
+	position: fixed;
+	top: 183px;
+	right: 1px;}
+	
+.v-center {
+	/* margin-top: 10px; */
+}
+
+.btn {
+	font-size: 15px;
+	text-decoration: none;
+	display: inline;
+	float: right;
+	border: none;
+	height: 30px;
+	margin-right: 10px;
+}
+
+.btn-small {
+	padding: .75em 1em;
+	font-size: 0.8em;
+}
+
+.modal-box {
+	display: none;
+	position: absolute;
+	z-index: 1000;
+	width: auto;
+	background: white;
+	border-bottom: 1px solid #aaa;
+	border-radius: 4px;
+	box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	background-clip: padding-box;
+	top: 30px !important;
+}
+
+@media ( min-width : 32em) {
+	.modal-box {
+		width: 70%;
+	}
+}
+
+.modal-box .modal-body {
+	width: 70%;
+}
+
+a.close {
+	line-height: 1;
+	font-size: 1.1em;
+	position: absolute;
+	top: 5%;
+	right: 2%;
+	text-decoration: none;
+	color: #555;
+	opacity: 3;
+	width: 15px;
+}
+
+ul.social-network {
+/* 	list-style: none;
+  display: inline;
+  margin-left:0 !important; */
+  padding: 0;
+  float: right;
+}
+ul.social-network li {
+  /* display: inline; */
+  /* margin: 15px 0px 0px 0px; */
+  float: left;
+  text-align: center;
+  list-style-type: none;
+}
+.social-circle li a {
+  display:inline-block;
+
+  margin:0 auto 0 auto;
+  -moz-border-radius:50%;
+  -webkit-border-radius:50%;
+  border-radius:50%;
+  text-align:center;
+  width: 35px;
+  height: 35px;
+  font-size:18px;
+  background-color: #007a9c;
+}
+.social-circle li i {
+  margin:0;
+  line-height:35px;
+  text-align: center;
+}
+
+
+.social-circle li a:hover i, .triggeredHover {
+  -moz-transform: rotate(360deg);
+  -webkit-transform: rotate(360deg);
+  -ms--transform: rotate(360deg);
+  transform: rotate(360deg);
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  -o-transition: all 0.2s;
+  -ms-transition: all 0.2s;
+  transition: all 0.2s;
+}
+.social-circle i  {
+  color: #fff;
+  -webkit-transition: all 0.8s;
+  -moz-transition: all 0.8s;
+  -o-transition: all 0.8s;
+  -ms-transition: all 0.8s;
+  transition: all 0.8s;
+}
+
+.one{
+color:#ef8031;
+font-size: 12px;
+}
+.social-circle li a img{
+margin-top:5px;
+}
+.logo-wrap img {
+	width: 140%;
+}
+.skip_btn {
+	  /*background:#fff;*/
+      border: medium none;
+      color: #888;
+      display: block;
+     /*  float: left; */
+      font-weight: bold;
+      margin: 0 auto 0px;
+      max-width: auto;
+      padding: 8px 18px;
+      border-radius:3px;
+      cursor: pointer;
+      width: 25%;
+      font-size: 14px;
+    /*-webkit-box-shadow: 0 5px 15px rgba(0,0,0,.5);
+    box-shadow: 0 0px 8px rgba(0,0,0,.5);*/
+}
+.servicnewclsll
+{
+  display: none;
+  padding: 0px 15px;
+}
+.abcRioButtonLightBlue {
+	width: auto !important;
+	background-color: #cf4332;
+	color: #fff;
+}
+.abcRioButton {
+	box-shadow: none !important;
+	width: auto !important;
+	text-align: left;
+}
+.abcRioButtonIcon {
+	background-color: #fff;
+	margin: 1px !important;
+}
+.abcRioButtonContents {
+	font-size: 14px !important;
+}
+.abcRioButtonIcon a:hover {
+	background: none !important;
+}
+.abcRioButtonLightBlue:active {
+    background: none !important;
+    color: #fff;
+}
+.button-pop {
+	text-align: center;
+	border-radius: 5px;
+	background: #f58736;
+    border-color: #f58736;
+    color: #fff;
+}
+.btn-lg {
+	margin: 5px 10px 0px 0px;
+	padding: 5px 5px;
+}
+.list-inline>li {
+	padding-right: 0px;
+}
+.mobi-menu
+{
+	color: #fff;
+	border: none;
+	margin-right: 0px;
+	cursor: pointer;
+}
+.mobi-menu:hover
+{
+	background: none !important;
+}
+	
+.mobileShow {
+  display: none;
+}
+/* Smartphone Portrait and Landscape */
+@media only screen and (min-device-width: 220px) and (max-device-width: 767px) {
+  .mobileShow {
+    display: block;
+width: 100%;
+position: fixed;
+bottom: 0;
+margin-left: auto;
+margin-right: auto;
+color: #fff;
+background: #1D378C;
+padding: 10px;
+text-align: center;
+z-index: 999;
+  }
+	.mobileShow a {color: #fff;}
+}
+</style>
+<!-- <div class="gtranslate_wrapper"></div>
+<script>window.gtranslateSettings = {"default_language":"en","url_structure":"sub_directory","languages":["en","te","hi","ta","kn","mr","bn","pa","gu","ml","ar","ur"],"wrapper_selector":".gtranslate_wrapper","horizontal_position":"right","vertical_position":"top"}</script>
+<script src="https://cdn.gtranslate.net/widgets/latest/dropdown.js" defer></script> -->
